@@ -1,0 +1,28 @@
+//jade template for citationscribe
+doctype html
+html
+	head
+		title CitationScribe
+		link(rel='stylesheet', type='text/css', href='normalize.css')
+		link(rel='stylesheet', type='text/css', href='skeleton.css')
+	body
+		div(style={width: '60vw', margin: 'auto'})
+			h1(style='padding-top: 8px')
+				img(src='feather.png', style='height:70px;width:70px;')
+				| CitationScribe
+			hr/
+			h3 Select a citation format
+			.container
+				.row
+					.three.columns
+						input(class='button', id='apa', value='APA', type='button')
+					.three.columns
+						input(class='button', id='mla', value='MLA', type='button')
+					.three.columns
+						input(class='button', id='chi', value='Chicago', type='button')
+					.three.columns
+						input(class='button', id='csc', value='CSC', type='button')
+		script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+		script(src='scripts.js')
+
+
