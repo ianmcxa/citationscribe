@@ -5,14 +5,15 @@ html
 		title CitationScribe
 		link(rel='stylesheet', type='text/css', href='normalize.css')
 		link(rel='stylesheet', type='text/css', href='skeleton.css')
+		link(rel='stylesheet', type='text/css', href='citationscribe.css')
 	body
 		div(style={width: '60vw', margin: 'auto'})
 			h1(style='padding-top: 8px')
 				img(src='feather.png', style='height:70px;width:70px;')
 				| CitationScribe
 			hr/
-			h3 Select a citation format
-			.container
+			h4 Select a citation format
+			div(class='container', style={width: '100%'})
 				.row
 					.three.columns
 						input(class='button', id='apa', value='APA', type='button')
@@ -22,7 +23,130 @@ html
 						input(class='button', id='chi', value='Chicago', type='button')
 					.three.columns
 						input(class='button', id='csc', value='CSC', type='button')
-		script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+				#resources.hidden
+					.row
+						h4 Select a resource
+					.row
+						.four.columns
+							input(class='button', id='book', value='Book', type='button')
+						.four.columns
+							input(class='button', id='magazine', value='Magazine', type='button')
+						.four.columns
+							input(class='button', id='news', value='Newspaper', type='button')
+					.row
+						.four.columns
+							input(class='button', id='web', value='Website', type='button')
+						.four.columns
+							input(class='button', id='journal', value='Journal', type='button')
+						.four.columns
+							input(class='button', id='movie', value='Movie', type='button')
+				
+			//Citation Formats
+			div(id ='bookInput',class='container hidden', style={width: '100%'})
+				.row
+					.two.columns
+						label(class='u-pull-right', for='title') Book Title
+					.six.columns
+						input(class='u-full-width', placeholder='Title', type='text', id='bookTitle')
+				#bookAuthors
+					.row
+						.two.columns
+							label(class='u-pull-right') Author
+						.three.columns
+							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+						.two.columns
+							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+						.three.columns
+							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+						.two.columns
+							input(class='button', id='bookAddAuthor', value='Add Author', type='button')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='bookVolume') Volume
+					.two.columns
+						input(class='u-full-width', placeholder='Volume', type='text', id='bookVolume')
+					.one.column
+						label(class='u-pull-right', for='bookEdition') Edition
+					.two.columns
+						input(class='u-full-width', placeholder='Edition', type='text', id='bookEdition')
+					.two.columns
+						label(class='u-pull-right', for='bookPages') Page Numbers
+					.two.columns
+						input(class='u-full-width', placeholder='Page Numbers', type='text', id='bookNumbers')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='bookPublisher') Publisher
+					.four.columns
+						input(class='u-full-width', placeholder='Publisher', type='text', id='bookPublisher')
+					.one.column
+						label(class='u-pull-right', for='bookLocation') Location
+					.three.columns
+						input(class='u-full-width', placeholder='Location', type='text', id='bookLocation')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='bookYear') Year Published
+					.two.columns
+						input(class='u-full-width', placeholder='Year', type='text', id='bookYear')
+				.row
+					.three.columns
+						input(class='button-primary', id='citeBook', value='Make Citation', type='button')
+			//magazine
+			div(id ='magInput',class='container hidden', style={width: '100%'})
+				.row
+					.two.columns
+						label(class='u-pull-right', for='title') Article Title
+					.six.columns
+						input(class='u-full-width', placeholder='Title', type='text', id='magArticleTitle')
+				#magAuthors
+					.row
+						.two.columns
+							label(class='u-pull-right') Author
+						.three.columns
+							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+						.two.columns
+							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+						.three.columns
+							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+						.two.columns
+							input(class='button', id='magAddAuthor', value='Add Author', type='button')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='magTitle') Magazine Title
+					.six.columns
+						input(class='u-full-width', placeholder='Magazine', type='text', id='magTitle')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='magURL') Magazine URL
+					.six.columns
+						input(class='u-full-width', placeholder='URL', type='text', id='magURL')
+
+				.row
+					.two.columns
+						label(class='u-pull-right', for='magVolume') Volume
+					.two.columns
+						input(class='u-full-width', placeholder='Volume', type='text', id='magVolume')
+					.two.columns
+						label(class='u-pull-right', for='magPages') Page Numbers
+					.two.columns
+						input(class='u-full-width', placeholder='Page Numbers', type='text', id='magNumbers')
+
+				.row
+					.two.columns
+						label(class='u-pull-right', for='magYear') Year Published
+					.two.columns
+						input(class='u-full-width', placeholder='Year', type='text', id='magYear')
+					.one.column
+						label(class='u-pull-right', for='magMonth') Month
+					.two.columns
+						input(class='u-full-width', placeholder='Month', type='text', id='magMonth')
+					.one.column
+						label(class='u-pull-right', for='magDay') Day
+					.two.columns
+						input(class='u-full-width', placeholder='Day', type='text', id='magDay')
+				.row
+					.three.columns
+						input(class='button-primary', id='citeMagazine', value='Make Citation', type='button')
+
+
+		script(src='jquery.min.js')
 		script(src='scripts.js')
-
-

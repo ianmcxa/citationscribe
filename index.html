@@ -5,13 +5,14 @@
     <title>CitationScribe</title>
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="skeleton.css">
+    <link rel="stylesheet" type="text/css" href="citationscribe.css">
   </head>
   <body>
     <div style="width:60vw;margin:auto">
       <h1 style="padding-top: 8px"><img src="feather.png" style="height:70px;width:70px;">CitationScribe</h1>
       <hr>
-      <h3>Select a citation format</h3>
-      <div class="container">
+      <h4>Select a citation format</h4>
+      <div style="width:100%" class="container">
         <div class="row">
           <div class="three columns">
             <input id="apa" value="APA" type="button" class="button">
@@ -26,9 +27,198 @@
             <input id="csc" value="CSC" type="button" class="button">
           </div>
         </div>
+        <div id="resources" class="hidden">
+          <div class="row">
+            <h4>Select a resource</h4>
+          </div>
+          <div class="row">
+            <div class="four columns">
+              <input id="book" value="Book" type="button" class="button">
+            </div>
+            <div class="four columns">
+              <input id="magazine" value="Magazine" type="button" class="button">
+            </div>
+            <div class="four columns">
+              <input id="news" value="Newspaper" type="button" class="button">
+            </div>
+          </div>
+          <div class="row">
+            <div class="four columns">
+              <input id="web" value="Website" type="button" class="button">
+            </div>
+            <div class="four columns">
+              <input id="journal" value="Journal" type="button" class="button">
+            </div>
+            <div class="four columns">
+              <input id="movie" value="Movie" type="button" class="button">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Citation Formats-->
+      <div id="bookInput" style="width:100%" class="container hidden">
+        <div class="row">
+          <div class="two columns">
+            <label for="title" class="u-pull-right">Book Title</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Title" type="text" id="bookTitle" class="u-full-width">
+          </div>
+        </div>
+        <div id="bookAuthors">
+          <div class="row">
+            <div class="two columns">
+              <label class="u-pull-right">Author</label>
+            </div>
+            <div class="three columns">
+              <input placeholder="Last Name" type="text" class="u-full-width AuthorLast">
+            </div>
+            <div class="two columns">
+              <input placeholder="Initial" type="text" class="u-full-width AuthorInitial">
+            </div>
+            <div class="three columns">
+              <input placeholder="First Name" type="text" class="u-full-width AuthorFirst">
+            </div>
+            <div class="two columns">
+              <input id="bookAddAuthor" value="Add Author" type="button" class="button">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="bookVolume" class="u-pull-right">Volume</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Volume" type="text" id="bookVolume" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="bookEdition" class="u-pull-right">Edition</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Edition" type="text" id="bookEdition" class="u-full-width">
+          </div>
+          <div class="two columns">
+            <label for="bookPages" class="u-pull-right">Page Numbers</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Page Numbers" type="text" id="bookNumbers" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="bookPublisher" class="u-pull-right">Publisher</label>
+          </div>
+          <div class="four columns">
+            <input placeholder="Publisher" type="text" id="bookPublisher" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="bookLocation" class="u-pull-right">Location</label>
+          </div>
+          <div class="three columns">
+            <input placeholder="Location" type="text" id="bookLocation" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="bookYear" class="u-pull-right">Year Published</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Year" type="text" id="bookYear" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="three columns">
+            <input id="citeBook" value="Make Citation" type="button" class="button-primary">
+          </div>
+        </div>
+      </div>
+      <!--magazine-->
+      <div id="magInput" style="width:100%" class="container hidden">
+        <div class="row">
+          <div class="two columns">
+            <label for="title" class="u-pull-right">Article Title</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Title" type="text" id="magArticleTitle" class="u-full-width">
+          </div>
+        </div>
+        <div id="magAuthors">
+          <div class="row">
+            <div class="two columns">
+              <label class="u-pull-right">Author</label>
+            </div>
+            <div class="three columns">
+              <input placeholder="Last Name" type="text" class="u-full-width AuthorLast">
+            </div>
+            <div class="two columns">
+              <input placeholder="Initial" type="text" class="u-full-width AuthorInitial">
+            </div>
+            <div class="three columns">
+              <input placeholder="First Name" type="text" class="u-full-width AuthorFirst">
+            </div>
+            <div class="two columns">
+              <input id="magAddAuthor" value="Add Author" type="button" class="button">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="magTitle" class="u-pull-right">Magazine Title</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Magazine" type="text" id="magTitle" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="magURL" class="u-pull-right">Magazine URL</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="URL" type="text" id="magURL" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="magVolume" class="u-pull-right">Volume</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Volume" type="text" id="magVolume" class="u-full-width">
+          </div>
+          <div class="two columns">
+            <label for="magPages" class="u-pull-right">Page Numbers</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Page Numbers" type="text" id="magNumbers" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="magYear" class="u-pull-right">Year Published</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Year" type="text" id="magYear" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="magMonth" class="u-pull-right">Month</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Month" type="text" id="magMonth" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="magDay" class="u-pull-right">Day</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Day" type="text" id="magDay" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="three columns">
+            <input id="citeMagazine" value="Make Citation" type="button" class="button-primary">
+          </div>
+        </div>
       </div>
     </div>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="jquery.min.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>
