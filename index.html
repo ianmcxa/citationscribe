@@ -24,7 +24,7 @@
             <input id="chi" value="Chicago" type="button" class="button">
           </div>
           <div class="three columns">
-            <input id="csc" value="CSC" type="button" class="button">
+            <input id="cse" value="CSE" type="button" class="button">
           </div>
         </div>
         <div id="resources" class="hidden">
@@ -56,6 +56,7 @@
         </div>
       </div>
       <!--Citation Formats-->
+      <!--book-->
       <div id="bookInput" style="width:100%" class="container hidden">
         <div class="row">
           <div class="two columns">
@@ -214,6 +215,184 @@
         <div class="row">
           <div class="three columns">
             <input id="citeMagazine" value="Make Citation" type="button" class="button-primary">
+          </div>
+        </div>
+      </div>
+      <!--newspaper-->
+      <div id="newsInput" style="width:100%" class="container hidden">
+        <div class="row">
+          <div class="two columns">
+            <label for="title" class="u-pull-right">Article Title</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Title" type="text" id="newsArticleTitle" class="u-full-width">
+          </div>
+        </div>
+        <div id="newsAuthors">
+          <div class="row">
+            <div class="two columns">
+              <label class="u-pull-right">Author</label>
+            </div>
+            <div class="three columns">
+              <input placeholder="Last Name" type="text" class="u-full-width AuthorLast">
+            </div>
+            <div class="two columns">
+              <input placeholder="Initial" type="text" class="u-full-width AuthorInitial">
+            </div>
+            <div class="three columns">
+              <input placeholder="First Name" type="text" class="u-full-width AuthorFirst">
+            </div>
+            <div class="two columns">
+              <input id="newsAddAuthor" value="Add Author" type="button" class="button">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="newsTitle" class="u-pull-right">Newspaper Title</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Newspaper" type="text" id="newsTitle" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="newsURL" class="u-pull-right">Newspaper URL</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="URL" type="text" id="newsURL" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="newsPublisher" class="u-pull-right">Publisher</label>
+          </div>
+          <div class="four columns">
+            <input placeholder="Publisher" type="text" id="newsPublisher" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="newsCity" class="u-pull-right">City</label>
+          </div>
+          <div class="three columns">
+            <input placeholder="Location" type="text" id="newsCity" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="newsEdition" class="u-pull-right">Edition</label>
+          </div>
+          <div class="three columns">
+            <input placeholder="Edition" type="text" id="newsEdition" class="u-full-width">
+          </div>
+          <div class="two columns">
+            <label for="newsPages" class="u-pull-right">Page Numbers</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Page Numbers" type="text" id="newsNumbers" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="newsYear" class="u-pull-right">Year Published</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Year" type="text" id="newsYear" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="newsMonth" class="u-pull-right">Month</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Month" type="text" id="newsMonth" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="newsDay" class="u-pull-right">Day</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Day" type="text" id="newsDay" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="three columns">
+            <input id="citeNewspaper" value="Make Citation" type="button" class="button-primary">
+          </div>
+        </div>
+      </div>
+      <!--website-->
+      <div id="webInput" style="width:100%" class="container hidden">
+        <div class="row">
+          <div class="two columns">
+            <label for="title" class="u-pull-right">Article Title</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Title" type="text" id="webArticleTitle" class="u-full-width">
+          </div>
+        </div>
+        <div id="webAuthors">
+          <div class="row">
+            <div class="two columns">
+              <label class="u-pull-right">Author</label>
+            </div>
+            <div class="three columns">
+              <input placeholder="Last Name" type="text" class="u-full-width AuthorLast">
+            </div>
+            <div class="two columns">
+              <input placeholder="Initial" type="text" class="u-full-width AuthorInitial">
+            </div>
+            <div class="three columns">
+              <input placeholder="First Name" type="text" class="u-full-width AuthorFirst">
+            </div>
+            <div class="two columns">
+              <input id="webAddAuthor" value="Add Author" type="button" class="button">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="webTitle" class="u-pull-right">Website Title</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Website" type="text" id="webTitle" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="webURL" class="u-pull-right">Newspaper URL</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="URL" type="text" id="webURL" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="webPublisher" class="u-pull-right">Publisher</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Publisher" type="text" id="webPublisher" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="webYear" class="u-pull-right">Year Published</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Year" type="text" id="webYear" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="webMonth" class="u-pull-right">Month</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Month" type="text" id="webMonth" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="webDay" class="u-pull-right">Day</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Day" type="text" id="webDay" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="three columns">
+            <input id="citeWebsite" value="Make Citation" type="button" class="button-primary">
           </div>
         </div>
       </div>

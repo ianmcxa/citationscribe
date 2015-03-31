@@ -26,6 +26,38 @@ showInput = function() {
 			$('#webInput').hide();
 			$('#journalInput').hide();
 			$('#movieInput').hide();
+	} else if(resource == 'news') {
+			$('#newsInput').show('slow');
+
+			$('#bookInput').hide();
+			$('#magInput').hide();
+			$('#webInput').hide();
+			$('#journalInput').hide();
+			$('#movieInput').hide();
+	} else if(resource == 'web') {
+			$('#webInput').show('slow');
+
+			$('#bookInput').hide();
+			$('#magInput').hide();
+			$('#newsInput').hide();
+			$('#journalInput').hide();
+			$('#movieInput').hide();
+	} else if(resource == 'journal') {
+			$('#journalInput').show('slow');
+
+			$('#bookInput').hide();
+			$('#magInput').hide();
+			$('#webInput').hide();
+			$('#newsInput').hide();
+			$('#movieInput').hide();
+	} else if(resource == 'movie') {
+			$('#newsInput').show('slow');
+
+			$('#bookInput').hide();
+			$('#magInput').hide();
+			$('#webInput').hide();
+			$('#journalInput').hide();
+			$('#newsInput').hide();
 	};
 };
 
@@ -37,7 +69,7 @@ $( document).ready(function() {
 
 			$('#mla').removeClass('button-primary');
 			$('#chi').removeClass('button-primary');
-			$('#csc').removeClass('button-primary');
+			$('#cse').removeClass('button-primary');
 		});
 		$('#mla').click(function( event) {
 			$('#mla').addClass('button-primary');
@@ -46,7 +78,7 @@ $( document).ready(function() {
 
 			$('#apa').removeClass('button-primary');
 			$('#chi').removeClass('button-primary');
-			$('#csc').removeClass('button-primary');
+			$('#cse').removeClass('button-primary');
 		});
 		$('#chi').click(function( event) {
 			$('#chi').addClass('button-primary');
@@ -55,11 +87,11 @@ $( document).ready(function() {
 
 			$('#mla').removeClass('button-primary');
 			$('#apa').removeClass('button-primary');
-			$('#csc').removeClass('button-primary');
+			$('#cse').removeClass('button-primary');
 		});
-		$("#csc").click(function( event) {
-			$('#csc').addClass('button-primary');
-			format = 'csc';
+		$("#cse").click(function( event) {
+			$('#cse').addClass('button-primary');
+			format = 'cse';
 			showResources();
 
 			$('#mla').removeClass('button-primary');
@@ -108,7 +140,7 @@ $( document).ready(function() {
 
 			$('#magazine').removeClass('button-primary');
 			$('#book').removeClass('button-primary');
-			$('#book').removeClass('button-primary');
+			$('#news').removeClass('button-primary');
 			$('#journal').removeClass('button-primary');
 			$('#movie').removeClass('button-primary');
 		});
@@ -142,6 +174,10 @@ $( document).ready(function() {
 		});
 		$('#magAddAuthor').click(function( event) {
 				$('#magAuthors').append(authors);
+				$('.hiddenAuthor').slideDown();
+		});
+		$('#newsAddAuthor').click(function( event) {
+				$('#newsAuthors').append(authors);
 				$('.hiddenAuthor').slideDown();
 		});
 });

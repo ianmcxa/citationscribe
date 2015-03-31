@@ -22,7 +22,7 @@ html
 					.three.columns
 						input(class='button', id='chi', value='Chicago', type='button')
 					.three.columns
-						input(class='button', id='csc', value='CSC', type='button')
+						input(class='button', id='cse', value='CSE', type='button')
 				#resources.hidden
 					.row
 						h4 Select a resource
@@ -42,6 +42,7 @@ html
 							input(class='button', id='movie', value='Movie', type='button')
 				
 			//Citation Formats
+			//book
 			div(id ='bookInput',class='container hidden', style={width: '100%'})
 				.row
 					.two.columns
@@ -146,6 +147,126 @@ html
 				.row
 					.three.columns
 						input(class='button-primary', id='citeMagazine', value='Make Citation', type='button')
+				
+			//newspaper
+			div(id ='newsInput',class='container hidden', style={width: '100%'})
+				.row
+					.two.columns
+						label(class='u-pull-right', for='title') Article Title
+					.six.columns
+						input(class='u-full-width', placeholder='Title', type='text', id='newsArticleTitle')
+				#newsAuthors
+					.row
+						.two.columns
+							label(class='u-pull-right') Author
+						.three.columns
+							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+						.two.columns
+							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+						.three.columns
+							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+						.two.columns
+							input(class='button', id='newsAddAuthor', value='Add Author', type='button')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='newsTitle') Newspaper Title
+					.six.columns
+						input(class='u-full-width', placeholder='Newspaper', type='text', id='newsTitle')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='newsURL') Newspaper URL
+					.six.columns
+						input(class='u-full-width', placeholder='URL', type='text', id='newsURL')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='newsPublisher') Publisher
+					.four.columns
+						input(class='u-full-width', placeholder='Publisher', type='text', id='newsPublisher')
+					.one.column
+						label(class='u-pull-right', for='newsCity') City
+					.three.columns
+						input(class='u-full-width', placeholder='Location', type='text', id='newsCity')
+
+				.row
+					.two.columns
+						label(class='u-pull-right', for='newsEdition') Edition
+					.three.columns
+						input(class='u-full-width', placeholder='Edition', type='text', id='newsEdition')
+					.two.columns
+						label(class='u-pull-right', for='newsPages') Page Numbers
+					.two.columns
+						input(class='u-full-width', placeholder='Page Numbers', type='text', id='newsNumbers')
+
+				.row
+					.two.columns
+						label(class='u-pull-right', for='newsYear') Year Published
+					.two.columns
+						input(class='u-full-width', placeholder='Year', type='text', id='newsYear')
+					.one.column
+						label(class='u-pull-right', for='newsMonth') Month
+					.two.columns
+						input(class='u-full-width', placeholder='Month', type='text', id='newsMonth')
+					.one.column
+						label(class='u-pull-right', for='newsDay') Day
+					.two.columns
+						input(class='u-full-width', placeholder='Day', type='text', id='newsDay')
+				.row
+					.three.columns
+						input(class='button-primary', id='citeNewspaper', value='Make Citation', type='button')
+
+			//website
+			div(id ='webInput',class='container hidden', style={width: '100%'})
+				.row
+					.two.columns
+						label(class='u-pull-right', for='title') Article Title
+					.six.columns
+						input(class='u-full-width', placeholder='Title', type='text', id='webArticleTitle')
+				#webAuthors
+					.row
+						.two.columns
+							label(class='u-pull-right') Author
+						.three.columns
+							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+						.two.columns
+							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+						.three.columns
+							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+						.two.columns
+							input(class='button', id='webAddAuthor', value='Add Author', type='button')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='webTitle') Website Title
+					.six.columns
+						input(class='u-full-width', placeholder='Website', type='text', id='webTitle')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='webURL') Newspaper URL
+					.six.columns
+						input(class='u-full-width', placeholder='URL', type='text', id='webURL')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='webPublisher') Publisher
+					.six.columns
+						input(class='u-full-width', placeholder='Publisher', type='text', id='webPublisher')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='webYear') Year Published
+					.two.columns
+						input(class='u-full-width', placeholder='Year', type='text', id='webYear')
+					.one.column
+						label(class='u-pull-right', for='webMonth') Month
+					.two.columns
+						input(class='u-full-width', placeholder='Month', type='text', id='webMonth')
+					.one.column
+						label(class='u-pull-right', for='webDay') Day
+					.two.columns
+						input(class='u-full-width', placeholder='Day', type='text', id='webDay')
+				.row
+					.three.columns
+						input(class='button-primary', id='citeWebsite', value='Make Citation', type='button')
+
+
+
 
 
 		script(src='jquery.min.js')
