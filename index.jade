@@ -286,27 +286,51 @@ html
 						.two.columns
 							input(class='button', id='jouAddAuthor', value='Add Author', type='button')
 				.row
-					radio(label='mustard')
-					radiogroup
-						radio(id='print', label='Print', accesskey='P')
-						radio(id='online', label='Online', accesskey='O')
-						radio(id='database', label='Database', accesskey='D')
-
-				.row
 					.two.columns
 						label(class='u-pull-right', for='jouTitle') Journal Title
 					.six.columns
 						input(class='u-full-width', placeholder='Journal', type='text', id='jouTitle')
 				.row
-					.two.columns
-						label(class='u-pull-right', for='jouURL') Journal URL
-					.six.columns
-						input(class='u-full-width', placeholder='URL', type='text', id='jouURL')
+					form(action='')
+						.one.column
+							label(class='u-pull-right', for='print') Print
+						.one.column
+							input(id='print', name='source', type='radio')
+						.one.column
+							label(class='u-pull-right', for='online') Online
+						.one.column
+							input(id='online', name='source', type='radio')
+						.one.column
+							label(class='u-pull-right button', for='database') Database
+						.one.column
+							input(id='database', name='source', type='radio')
 				.row
 					.two.columns
 						label(class='u-pull-right', for='jouPublisher') Publisher
 					.four.columns
 						input(class='u-full-width', placeholder='Publisher', type='text', id='jouPublisher')
+				#online.hidden
+					.row
+						.two.columns
+							label(class='u-pull-right', for='jouWebURL') URL
+						.six.columns
+							input(class='u-full-width', placeholder='URL', type='text', id='jouWebURL')
+					.row
+						.two.columns
+							label(class='u-pull-right', for='jouWebTitle') Website Title
+						.six.columns
+							input(class='u-full-width', placeholder='Website Title', type='text', id='jouWebTitle')
+				#database.hidden
+					.row
+						.two.columns
+							label(class='u-pull-right', for='jouDatURL') URL
+						.six.columns
+							input(class='u-full-width', placeholder='URL', type='text', id='jouDatURL')
+					.row
+						.two.columns
+							label(class='u-pull-right', for='jouDatTitle') Database Title
+						.six.columns
+							input(class='u-full-width', placeholder='Website Title', type='text', id='jouDatTitle')
 				.row
 					.two.columns
 						label(class='u-pull-right', for='jouVolume') Volume

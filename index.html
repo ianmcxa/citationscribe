@@ -427,14 +427,6 @@
           </div>
         </div>
         <div class="row">
-          <radio label="mustard"></radio>
-          <radiogroup>
-            <radio id="print" label="Print" accesskey="P"></radio>
-            <radio id="online" label="Online" accesskey="O"></radio>
-            <radio id="database" label="Database" accesskey="D"></radio>
-          </radiogroup>
-        </div>
-        <div class="row">
           <div class="two columns">
             <label for="jouTitle" class="u-pull-right">Journal Title</label>
           </div>
@@ -443,12 +435,26 @@
           </div>
         </div>
         <div class="row">
-          <div class="two columns">
-            <label for="jouURL" class="u-pull-right">Journal URL</label>
-          </div>
-          <div class="six columns">
-            <input placeholder="URL" type="text" id="jouURL" class="u-full-width">
-          </div>
+          <form action="">
+            <div class="one column">
+              <label for="print" class="u-pull-right">Print</label>
+            </div>
+            <div class="one column">
+              <input id="print" name="source" type="radio">
+            </div>
+            <div class="one column">
+              <label for="online" class="u-pull-right">Online</label>
+            </div>
+            <div class="one column">
+              <input id="online" name="source" type="radio">
+            </div>
+            <div class="one column">
+              <label for="database" class="u-pull-right button">Database</label>
+            </div>
+            <div class="one column">
+              <input id="database" name="source" type="radio">
+            </div>
+          </form>
         </div>
         <div class="row">
           <div class="two columns">
@@ -456,6 +462,42 @@
           </div>
           <div class="four columns">
             <input placeholder="Publisher" type="text" id="jouPublisher" class="u-full-width">
+          </div>
+        </div>
+        <div id="online" class="hidden">
+          <div class="row">
+            <div class="two columns">
+              <label for="jouWebURL" class="u-pull-right">URL</label>
+            </div>
+            <div class="six columns">
+              <input placeholder="URL" type="text" id="jouWebURL" class="u-full-width">
+            </div>
+          </div>
+          <div class="row">
+            <div class="two columns">
+              <label for="jouWebTitle" class="u-pull-right">Website Title</label>
+            </div>
+            <div class="six columns">
+              <input placeholder="Website Title" type="text" id="jouWebTitle" class="u-full-width">
+            </div>
+          </div>
+        </div>
+        <div id="database" class="hidden">
+          <div class="row">
+            <div class="two columns">
+              <label for="jouDatURL" class="u-pull-right">URL</label>
+            </div>
+            <div class="six columns">
+              <input placeholder="URL" type="text" id="jouDatURL" class="u-full-width">
+            </div>
+          </div>
+          <div class="row">
+            <div class="two columns">
+              <label for="jouDatTitle" class="u-pull-right">Database Title</label>
+            </div>
+            <div class="six columns">
+              <input placeholder="Website Title" type="text" id="jouDatTitle" class="u-full-width">
+            </div>
           </div>
         </div>
         <div class="row">
