@@ -180,4 +180,12 @@ $( document).ready(function() {
 				$('#newsAuthors').append(authors);
 				$('.hiddenAuthor').slideDown();
 		});
+		$('#webAddAuthor').click(function( event) {
+				$('#webAuthors').append(authors);
+				$('.hiddenAuthor').slideDown();
+		});
+		$('#jouAddAuthor').click(function( event) {
+				$('#jouAuthors').append(authors);
+				$('.hiddenAuthor').slideDown();
+		});
 });

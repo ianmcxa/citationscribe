@@ -3,6 +3,7 @@
 <html>
   <head>
     <title>CitationScribe</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="skeleton.css">
     <link rel="stylesheet" type="text/css" href="citationscribe.css">
@@ -393,6 +394,113 @@
         <div class="row">
           <div class="three columns">
             <input id="citeWebsite" value="Make Citation" type="button" class="button-primary">
+          </div>
+        </div>
+      </div>
+      <!--Journal-->
+      <div id="journalInput" style="width:100%" class="container hidden">
+        <div class="row">
+          <div class="two columns">
+            <label for="title" class="u-pull-right">Article Title</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Title" type="text" id="jouArticleTitle" class="u-full-width">
+          </div>
+        </div>
+        <div id="jouAuthors">
+          <div class="row">
+            <div class="two columns">
+              <label class="u-pull-right">Author</label>
+            </div>
+            <div class="three columns">
+              <input placeholder="Last Name" type="text" class="u-full-width AuthorLast">
+            </div>
+            <div class="two columns">
+              <input placeholder="Initial" type="text" class="u-full-width AuthorInitial">
+            </div>
+            <div class="three columns">
+              <input placeholder="First Name" type="text" class="u-full-width AuthorFirst">
+            </div>
+            <div class="two columns">
+              <input id="jouAddAuthor" value="Add Author" type="button" class="button">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <radio label="mustard"></radio>
+          <radiogroup>
+            <radio id="print" label="Print" accesskey="P"></radio>
+            <radio id="online" label="Online" accesskey="O"></radio>
+            <radio id="database" label="Database" accesskey="D"></radio>
+          </radiogroup>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="jouTitle" class="u-pull-right">Journal Title</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Journal" type="text" id="jouTitle" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="jouURL" class="u-pull-right">Journal URL</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="URL" type="text" id="jouURL" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="jouPublisher" class="u-pull-right">Publisher</label>
+          </div>
+          <div class="four columns">
+            <input placeholder="Publisher" type="text" id="jouPublisher" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="jouVolume" class="u-pull-right">Volume</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Volume" type="text" id="jouVolume" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="jouIssue" class="u-pull-right">Issue</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Issue Number" type="text" id="jouIssue" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="jouPages" class="u-pull-right">Pages</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Page Numbers" type="text" id="jouNumbers" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="jouYear" class="u-pull-right">Year Published</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Year" type="text" id="jouYear" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="jouMonth" class="u-pull-right">Month</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Month" type="text" id="jouMonth" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="jouDay" class="u-pull-right">Day</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Day" type="text" id="jouDay" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="three columns">
+            <input id="citeJournal" value="Make Citation" type="button" class="button-primary">
           </div>
         </div>
       </div>

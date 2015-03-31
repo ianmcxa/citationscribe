@@ -3,6 +3,7 @@ doctype html
 html
 	head
 		title CitationScribe
+		link(rel='icon' type='image/png' href='favicon.png')
 		link(rel='stylesheet', type='text/css', href='normalize.css')
 		link(rel='stylesheet', type='text/css', href='skeleton.css')
 		link(rel='stylesheet', type='text/css', href='citationscribe.css')
@@ -265,6 +266,77 @@ html
 					.three.columns
 						input(class='button-primary', id='citeWebsite', value='Make Citation', type='button')
 
+			//Journal
+			div(id ='journalInput',class='container hidden', style={width: '100%'})
+				.row
+					.two.columns
+						label(class='u-pull-right', for='title') Article Title
+					.six.columns
+						input(class='u-full-width', placeholder='Title', type='text', id='jouArticleTitle')
+				#jouAuthors
+					.row
+						.two.columns
+							label(class='u-pull-right') Author
+						.three.columns
+							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+						.two.columns
+							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+						.three.columns
+							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+						.two.columns
+							input(class='button', id='jouAddAuthor', value='Add Author', type='button')
+				.row
+					radio(label='mustard')
+					radiogroup
+						radio(id='print', label='Print', accesskey='P')
+						radio(id='online', label='Online', accesskey='O')
+						radio(id='database', label='Database', accesskey='D')
+
+				.row
+					.two.columns
+						label(class='u-pull-right', for='jouTitle') Journal Title
+					.six.columns
+						input(class='u-full-width', placeholder='Journal', type='text', id='jouTitle')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='jouURL') Journal URL
+					.six.columns
+						input(class='u-full-width', placeholder='URL', type='text', id='jouURL')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='jouPublisher') Publisher
+					.four.columns
+						input(class='u-full-width', placeholder='Publisher', type='text', id='jouPublisher')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='jouVolume') Volume
+					.two.columns
+						input(class='u-full-width', placeholder='Volume', type='text', id='jouVolume')
+					.one.column
+						label(class='u-pull-right', for='jouIssue') Issue
+					.two.columns
+						input(class='u-full-width', placeholder='Issue Number', type='text', id='jouIssue')
+					.one.column
+						label(class='u-pull-right', for='jouPages') Pages
+					.two.columns
+						input(class='u-full-width', placeholder='Page Numbers', type='text', id='jouNumbers')
+
+				.row
+					.two.columns
+						label(class='u-pull-right', for='jouYear') Year Published
+					.two.columns
+						input(class='u-full-width', placeholder='Year', type='text', id='jouYear')
+					.one.column
+						label(class='u-pull-right', for='jouMonth') Month
+					.two.columns
+						input(class='u-full-width', placeholder='Month', type='text', id='jouMonth')
+					.one.column
+						label(class='u-pull-right', for='jouDay') Day
+					.two.columns
+						input(class='u-full-width', placeholder='Day', type='text', id='jouDay')
+				.row
+					.three.columns
+						input(class='button-primary', id='citeJournal', value='Make Citation', type='button')
 
 
 
