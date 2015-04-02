@@ -1,14 +1,51 @@
 //jquery scripts for citationscribe
 //= require jquery
 
-var showResources, showInput, format, resource, authors;
-
+var showResources, showInput, format, resource, authors, makeBook, makeMagazine, makeNews, makeWeb, makeJournal, makeMovie, apaBook, mlaBook, chiBook, cseBook;
 authors = '<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Author</label></div><div class="three columns"><input placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>';
+directors = '<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Director</label></div><div class="three columns"><input placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>';
+
 
 showResources = function() {
 	$('#resourceHeader').show('fast');
 	$('#resources').show('fast');
 };
+makeBook = function() {
+	var title = $('#bookTitle').val();
+	var volume = $('#bookVolume').val();
+	var edition = $('#bookEdition').val();
+	var pages = $('#bookPages').val();
+	var publisher = $('#bookPublisher').val();
+	var locate = $('#bookLocation').val();
+	var year = $('#bookYear').val();
+	//iterate through and get an array of the authors
+	//This should be done in the format methods. The author issue is solved by formatting at the same time as reading. Which is how it all should be done.
+	var authorFirst = [];
+	$('.AuthorFirst').each(function(i, obj) {
+			authorFirst.push(obj.val());
+	});
+	var authorInitial = [];
+	$('.AuthorInitial').each(function(i, obj) {
+			authorInitial.push(obj.val());
+	});
+	var authorLast = [];
+	$('.AuthorLast').each(function(i, obj) {
+			authorLast.push(obj.val());
+	});
+	if (format == 'apa') {
+		apaBook(title, authorLast, authorInitial, authorFirst, edition, volume, publisher, locate);
+	} else if (format == 'mla') {
+		mlaBook();
+	} else if (format == 'chi') {
+		chiBook();
+	} else if (format == 'cse') {
+		cseBook();
+	};
+};
+apaBook = function(title, authorLast, authorInitial, authorFirst, edition, volume, publisher, locate) {
+	var citation = '';	
+};
+
 showInput = function() {
 	if (resource == 'book') {
 			$('#bookInput').show('slow');
@@ -51,7 +88,7 @@ showInput = function() {
 			$('#newsInput').hide();
 			$('#movieInput').hide();
 	} else if(resource == 'movie') {
-			$('#newsInput').show('slow');
+			$('#movieInput').show('slow');
 
 			$('#bookInput').hide();
 			$('#magInput').hide();
@@ -187,5 +224,23 @@ $( document).ready(function() {
 		$('#jouAddAuthor').click(function( event) {
 				$('#jouAuthors').append(authors);
 				$('.hiddenAuthor').slideDown();
+		});
+		$('#movieAddAuthor').click(function( event) {
+				$('#movieAuthors').append(directors);
+				$('.hiddenAuthor').slideDown();
+		});
+
+		//journal source buttons
+		$('#selectPrint').click(function( event) {
+				$('#online').slideUp('fast');
+				$('#database').slideUp('fast');
+		});
+		$('#selectOnline').click(function( event) {
+				$('#database').slideUp('fast');
+				$('#online').slideDown();
+		});
+		$('#selectDatabase').click(function( event) {
+				$('#online').slideUp('fast');
+				$('#database').slideDown();
 		});
 });

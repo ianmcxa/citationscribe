@@ -7,11 +7,14 @@
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="skeleton.css">
     <link rel="stylesheet" type="text/css" href="citationscribe.css">
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   </head>
   <body>
     <div style="width:60vw;margin:auto">
-      <h1 style="padding-top: 8px"><img src="feather.png" style="height:70px;width:70px;">CitationScribe</h1>
+      <h1 style="padding-top: 8px"><img src="feather.png" style="height:70px;width:70px;">CitationScribe </h1>
+      <h5>A simple and free multi format citation maker</h5>
       <hr>
+      <div class="hidden citations"></div>
       <h4>Select a citation format</h4>
       <div style="width:100%" class="container">
         <div class="row">
@@ -435,33 +438,22 @@
           </div>
         </div>
         <div class="row">
-          <form action="">
-            <div class="one column">
-              <label for="print" class="u-pull-right">Print</label>
-            </div>
-            <div class="one column">
-              <input id="print" name="source" type="radio">
-            </div>
-            <div class="one column">
-              <label for="online" class="u-pull-right">Online</label>
-            </div>
-            <div class="one column">
-              <input id="online" name="source" type="radio">
-            </div>
-            <div class="one column">
-              <label for="database" class="u-pull-right button">Database</label>
-            </div>
-            <div class="one column">
-              <input id="database" name="source" type="radio">
-            </div>
-          </form>
-        </div>
-        <div class="row">
           <div class="two columns">
             <label for="jouPublisher" class="u-pull-right">Publisher</label>
           </div>
-          <div class="four columns">
+          <div class="six columns">
             <input placeholder="Publisher" type="text" id="jouPublisher" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <input id="selectPrint" value="Print" type="button" class="button">
+          </div>
+          <div class="two columns">
+            <input id="selectOnline" value="Online" type="button" class="button">
+          </div>
+          <div class="two columns">
+            <input id="selectDatabase" value="Database" type="button" class="button">
           </div>
         </div>
         <div id="online" class="hidden">
@@ -496,7 +488,7 @@
               <label for="jouDatTitle" class="u-pull-right">Database Title</label>
             </div>
             <div class="six columns">
-              <input placeholder="Website Title" type="text" id="jouDatTitle" class="u-full-width">
+              <input placeholder="Database Title" type="text" id="jouDatTitle" class="u-full-width">
             </div>
           </div>
         </div>
@@ -545,6 +537,83 @@
             <input id="citeJournal" value="Make Citation" type="button" class="button-primary">
           </div>
         </div>
+      </div>
+      <!--film-->
+      <div id="movieInput" style="width:100%" class="container hidden">
+        <div class="row">
+          <div class="two columns">
+            <label for="movietitle" class="u-pull-right">Movie Title</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Title" type="text" id="movieTitle" class="u-full-width">
+          </div>
+        </div>
+        <div id="movieAuthors">
+          <div class="row">
+            <div class="two columns">
+              <label class="u-pull-right">Director</label>
+            </div>
+            <div class="three columns">
+              <input placeholder="Last Name" type="text" class="u-full-width AuthorLast">
+            </div>
+            <div class="two columns">
+              <input placeholder="Initial" type="text" class="u-full-width AuthorInitial">
+            </div>
+            <div class="three columns">
+              <input placeholder="First Name" type="text" class="u-full-width AuthorFirst">
+            </div>
+            <div class="two columns">
+              <input id="movieAddAuthor" value="Add Author" type="button" class="button">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="moviePerformers" class="u-pull-right">Performers</label>
+          </div>
+          <div class="six columns">
+            <input placeholder="Performers" type="text" id="moviePerformers" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="moviePublisher" class="u-pull-right">Publisher</label>
+          </div>
+          <div class="four columns">
+            <input placeholder="Publisher" type="text" id="moviePublisher" class="u-full-width">
+          </div>
+          <div class="one column">
+            <label for="movieLocation" class="u-pull-right">Location</label>
+          </div>
+          <div class="three columns">
+            <input placeholder="Location" type="text" id="movieLocation" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="movieYear" class="u-pull-right">Year Released</label>
+          </div>
+          <div class="two columns">
+            <input placeholder="Year" type="text" id="movieYear" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="two columns">
+            <label for="movieMedium" class="u-pull-right">Medium</label>
+          </div>
+          <div class="five columns">
+            <input placeholder="Medium" type="text" id="movieMedium" class="u-full-width">
+          </div>
+        </div>
+        <div class="row">
+          <div class="three columns">
+            <input id="citeMovie" value="Make Citation" type="button" class="button-primary">
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <hr>
+        <p>CitationScribe is open source under the MIT license. Code available on <a href="https://github.com/ianmcxa/citationscribe">Github <i class="fa fa-github-square"></i></a></p>
       </div>
     </div>
     <script src="jquery.min.js"></script>

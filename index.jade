@@ -7,12 +7,17 @@ html
 		link(rel='stylesheet', type='text/css', href='normalize.css')
 		link(rel='stylesheet', type='text/css', href='skeleton.css')
 		link(rel='stylesheet', type='text/css', href='citationscribe.css')
+
+		link(rel='stylesheet', type='text/css', href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
 	body
 		div(style={width: '60vw', margin: 'auto'})
 			h1(style='padding-top: 8px')
 				img(src='feather.png', style='height:70px;width:70px;')
-				| CitationScribe
+				| CitationScribe 
+			h5 A simple and free multi format citation maker
 			hr/
+			.hidden.citations
+				
 			h4 Select a citation format
 			div(class='container', style={width: '100%'})
 				.row
@@ -291,24 +296,17 @@ html
 					.six.columns
 						input(class='u-full-width', placeholder='Journal', type='text', id='jouTitle')
 				.row
-					form(action='')
-						.one.column
-							label(class='u-pull-right', for='print') Print
-						.one.column
-							input(id='print', name='source', type='radio')
-						.one.column
-							label(class='u-pull-right', for='online') Online
-						.one.column
-							input(id='online', name='source', type='radio')
-						.one.column
-							label(class='u-pull-right button', for='database') Database
-						.one.column
-							input(id='database', name='source', type='radio')
-				.row
 					.two.columns
 						label(class='u-pull-right', for='jouPublisher') Publisher
-					.four.columns
+					.six.columns
 						input(class='u-full-width', placeholder='Publisher', type='text', id='jouPublisher')
+				.row
+					.two.columns
+						input(class='button', id='selectPrint', value='Print', type='button')
+					.two.columns
+						input(class='button', id='selectOnline', value='Online', type='button')
+					.two.columns
+						input(class='button', id='selectDatabase', value='Database', type='button')
 				#online.hidden
 					.row
 						.two.columns
@@ -330,7 +328,7 @@ html
 						.two.columns
 							label(class='u-pull-right', for='jouDatTitle') Database Title
 						.six.columns
-							input(class='u-full-width', placeholder='Website Title', type='text', id='jouDatTitle')
+							input(class='u-full-width', placeholder='Database Title', type='text', id='jouDatTitle')
 				.row
 					.two.columns
 						label(class='u-pull-right', for='jouVolume') Volume
@@ -362,8 +360,58 @@ html
 					.three.columns
 						input(class='button-primary', id='citeJournal', value='Make Citation', type='button')
 
-
-
-
+			//film
+			div(id ='movieInput',class='container hidden', style={width: '100%'})
+				.row
+					.two.columns
+						label(class='u-pull-right', for='movietitle') Movie Title
+					.six.columns
+						input(class='u-full-width', placeholder='Title', type='text', id='movieTitle')
+				#movieAuthors
+					.row
+						.two.columns
+							label(class='u-pull-right') Director
+						.three.columns
+							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+						.two.columns
+							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+						.three.columns
+							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+						.two.columns
+							input(class='button', id='movieAddAuthor', value='Add Author', type='button')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='moviePerformers') Performers
+					.six.columns
+						input(class='u-full-width', placeholder='Performers', type='text', id='moviePerformers')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='moviePublisher') Publisher
+					.four.columns
+						input(class='u-full-width', placeholder='Publisher', type='text', id='moviePublisher')
+					.one.column
+						label(class='u-pull-right', for='movieLocation') Location
+					.three.columns
+						input(class='u-full-width', placeholder='Location', type='text', id='movieLocation')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='movieYear') Year Released
+					.two.columns
+						input(class='u-full-width', placeholder='Year', type='text', id='movieYear')
+				.row
+					.two.columns
+						label(class='u-pull-right', for='movieMedium') Medium
+					.five.columns
+						input(class='u-full-width', placeholder='Medium', type='text', id='movieMedium')
+				.row
+					.three.columns
+						input(class='button-primary', id='citeMovie', value='Make Citation', type='button')
+			.footer
+				hr
+				p CitationScribe is open source under the MIT license. Code available on 
+					a(href='https://github.com/ianmcxa/citationscribe')
+						| Github 
+						i(class='fa fa-github-square')
+				
 		script(src='jquery.min.js')
 		script(src='scripts.js')
