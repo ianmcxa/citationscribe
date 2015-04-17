@@ -55,16 +55,16 @@ html
 						label(class='u-pull-right', for='title') Book Title
 					.six.columns
 						input(class='u-full-width', placeholder='Title', type='text', id='bookTitle')
-				#bookAuthors
+				form#bookAuthors
 					.row
 						.two.columns
 							label(class='u-pull-right') Author
 						.three.columns
-							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+							input(name='bookAuthorLast0' class='u-full-width AuthorLast', placeholder='Last Name', type='text')
 						.two.columns
-							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+							input(name='bookAuthorInitial0' class='u-full-width AuthorInitial', placeholder='Initial', type='text')
 						.three.columns
-							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+							input(name='bookAuthorFirst0' class='u-full-width AuthorFirst', placeholder='First Name', type='text')
 						.two.columns
 							input(class='button', id='bookAddAuthor', value='Add Author', type='button')
 				.row
@@ -104,16 +104,16 @@ html
 						label(class='u-pull-right', for='title') Article Title
 					.six.columns
 						input(class='u-full-width', placeholder='Title', type='text', id='magArticleTitle')
-				#magAuthors
+				form#magAuthors
 					.row
 						.two.columns
 							label(class='u-pull-right') Author
 						.three.columns
-							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+							input(name='magAuthorLast0' class='u-full-width AuthorLast', placeholder='Last Name', type='text')
 						.two.columns
-							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+							input(name='magAuthorInitial0' class='u-full-width AuthorInitial', placeholder='Initial', type='text')
 						.three.columns
-							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+							input(name='magAuthorFirst0' class='u-full-width AuthorFirst', placeholder='First Name', type='text')
 						.two.columns
 							input(class='button', id='magAddAuthor', value='Add Author', type='button')
 				.row
@@ -161,16 +161,16 @@ html
 						label(class='u-pull-right', for='title') Article Title
 					.six.columns
 						input(class='u-full-width', placeholder='Title', type='text', id='newsArticleTitle')
-				#newsAuthors
+				form#newsAuthors
 					.row
 						.two.columns
 							label(class='u-pull-right') Author
 						.three.columns
-							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+							input(name='newsAuthorLast0' class='u-full-width AuthorLast', placeholder='Last Name', type='text')
 						.two.columns
-							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+							input(name='newsAuthorInitial0' class='u-full-width AuthorInitial', placeholder='Initial', type='text')
 						.three.columns
-							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+							input(name='newsAuthorFirst0' class='u-full-width AuthorFirst', placeholder='First Name', type='text')
 						.two.columns
 							input(class='button', id='newsAddAuthor', value='Add Author', type='button')
 				.row
@@ -227,16 +227,16 @@ html
 						label(class='u-pull-right', for='title') Article Title
 					.six.columns
 						input(class='u-full-width', placeholder='Title', type='text', id='webArticleTitle')
-				#webAuthors
+				form#webAuthors
 					.row
 						.two.columns
 							label(class='u-pull-right') Author
 						.three.columns
-							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+							input(name='webAuthorLast0' class='u-full-width AuthorLast', placeholder='Last Name', type='text')
 						.two.columns
-							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+							input(name='webAuthorInitial0' class='u-full-width AuthorInitial', placeholder='Initial', type='text')
 						.three.columns
-							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+							input(name='webAuthorFirst0' class='u-full-width AuthorFirst', placeholder='First Name', type='text')
 						.two.columns
 							input(class='button', id='webAddAuthor', value='Add Author', type='button')
 				.row
@@ -278,16 +278,16 @@ html
 						label(class='u-pull-right', for='title') Article Title
 					.six.columns
 						input(class='u-full-width', placeholder='Title', type='text', id='jouArticleTitle')
-				#jouAuthors
+				form#jouAuthors
 					.row
 						.two.columns
 							label(class='u-pull-right') Author
 						.three.columns
-							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+							input(name='jouAuthorLast0' class='u-full-width AuthorLast', placeholder='Last Name', type='text')
 						.two.columns
-							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+							input(name='jouAuthorInitial0' class='u-full-width AuthorInitial', placeholder='Initial', type='text')
 						.three.columns
-							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+							input(name='jouAuthorFirst0' class='u-full-width AuthorFirst', placeholder='First Name', type='text')
 						.two.columns
 							input(class='button', id='jouAddAuthor', value='Add Author', type='button')
 				.row
@@ -367,16 +367,16 @@ html
 						label(class='u-pull-right', for='movietitle') Movie Title
 					.six.columns
 						input(class='u-full-width', placeholder='Title', type='text', id='movieTitle')
-				#movieAuthors
+				form#movieAuthors
 					.row
 						.two.columns
 							label(class='u-pull-right') Director
 						.three.columns
-							input(class='u-full-width AuthorLast', placeholder='Last Name', type='text')
+							input(name='movAuthorLast0' class='u-full-width AuthorLast', placeholder='Last Name', type='text')
 						.two.columns
-							input(class='u-full-width AuthorInitial', placeholder='Initial', type='text')
+							input(name='movAuthorInitial0' class='u-full-width AuthorInitial', placeholder='Initial', type='text')
 						.three.columns
-							input(class='u-full-width AuthorFirst', placeholder='First Name', type='text')
+							input(name='movAuthorFirst0' class='u-full-width AuthorFirst', placeholder='First Name', type='text')
 						.two.columns
 							input(class='button', id='movieAddAuthor', value='Add Author', type='button')
 				.row
