@@ -3,7 +3,7 @@
 
 var showResources, showInput, format, resource, authors, makeBook, makeMagazine, makeNews, makeWeb, makeJournal, makeMovie, apaBook, mlaBook, chiBook, cseBook;
 
-authors = ['<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Author</label></div><div class="three columns"><input ', ' placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input ', ' placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input ', ' placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>'];
+authors = ['<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Author</label></div><div class="three columns"><input name="', '" placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input name="', '" placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input name="', '" placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>'];
 directors = '<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Director</label></div><div class="three columns"><input placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>';
 var bookAuthors = 1;
 var magAuthors = 1;
@@ -16,27 +16,25 @@ showResources = function() {
 	$('#resourceHeader').show('fast');
 	$('#resources').show('fast');
 };
-makeBook = function() {
-	var title = $('#bookTitle').val();
-	var volume = $('#bookVolume').val();
-	var edition = $('#bookEdition').val();
-	var pages = $('#bookPages').val();
-	var publisher = $('#bookPublisher').val();
-	var locate = $('#bookLocation').val();
-	var year = $('#bookYear').val();
-	var authorArray = $('#bookAuthors').serializeArray();
-	if (format == 'apa') {
-		apaBook(title, authorArray, edition, volume, publisher, locate);
-	} else if (format == 'mla') {
-		mlaBook();
-	} else if (format == 'chi') {
-		chiBook();
-	} else if (format == 'cse') {
-		cseBook();
-	};
-};
-apaBook = function(title, authorArray, edition, volume, publisher, locate) {
+apaBook = function(title, authorArray, edition, volume, publisher, locate, year) {
 	var citation = '';
+	for (i = 0; i < authorArray.length*3, i += 3) {
+	   citation += authorArray[i].value + ',';
+	   
+	   if (authorArray[i+2].value.length != 0) {
+	       citation += ' ' + authorArray[i+1].value.charAt(0).toUpperCase() + '.';
+	   };
+	   if (authorArray[i+1].value.length != 0) {
+	       citation += ' ' + authorArray[i+1].value.charAt(0).toUpperCase() + '.';
+	   };
+	   
+	   if (i + 3 < authorArray.length*3) {
+	       citation += ', & ';
+	   } else {
+	       citation += ' ';
+	   };
+	};
+	citation += '(' + year + '). ' + '<em>' + title + '</em> ';
 };
 cseBook = function(title, authorArray, edition, volume, publisher, locate) {
     var citation = '';
@@ -246,8 +244,8 @@ $( document).ready(function() {
 				$('#online').slideUp('fast');
 				$('#database').slideDown();
 		});
-        $('#citeBook').click(function( event) {
-                var title = $('#bookTitle').val();
+        	$('#citeBook').click(function( event) {
+                    var title = $('#bookTitle').val();
 	            var volume = $('#bookVolume').val();
 	            var edition = $('#bookEdition').val();
 	            var pages = $('#bookPages').val();
@@ -256,7 +254,7 @@ $( document).ready(function() {
 	            var year = $('#bookYear').val();
 	            var authorArray = $('#bookAuthors').serializeArray();
 	            if (format == 'apa') {
-		            apaBook(title, authorArray, edition, volume, publisher, locate);
+		            apaBook(title, authorArray, edition, volume, publisher, locate, year);
 	            } else if (format == 'mla') {
 		            mlaBook();
 	            } else if (format == 'chi') {
@@ -264,5 +262,5 @@ $( document).ready(function() {
 	            } else if (format == 'cse') {
 		            cseBook();
 	            };
-        });
+               });
 });
