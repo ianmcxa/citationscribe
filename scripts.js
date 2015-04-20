@@ -18,23 +18,39 @@ showResources = function() {
 };
 apaBook = function(title, authorArray, edition, volume, publisher, locate, year) {
 	var citation = '';
-	for (i = 0; i < authorArray.length*3, i += 3) {
+	for (i = 0; i < authorArray.length; i += 3) {
 	   citation += authorArray[i].value + ',';
-	   
+
 	   if (authorArray[i+2].value.length != 0) {
 	       citation += ' ' + authorArray[i+1].value.charAt(0).toUpperCase() + '.';
 	   };
 	   if (authorArray[i+1].value.length != 0) {
 	       citation += ' ' + authorArray[i+1].value.charAt(0).toUpperCase() + '.';
 	   };
-	   
-	   if (i + 3 < authorArray.length*3) {
+
+	   if (i + 3 < authorArray.length) {
 	       citation += ', & ';
 	   } else {
 	       citation += ' ';
 	   };
 	};
 	citation += '(' + year + '). ' + '<em>' + title + '</em> ';
+    if (edition.length != 0) {
+        citation += '(' + edition + ' ed.). ';
+    };
+    if (volume.length != 0) {
+        citation += '(Vol. ' + volume + '). '
+    };
+    if (publisher.length != 0 && locate.length != 0) {
+        citation += locate + ': ' + publisher + '.';
+    } else if(publisher.length != 0) {
+        citation += publisher + '. ';
+    } else if(locate.length != 0) {
+        citation += locate + '. ';
+    };
+		citation += '<br/>'
+    $('#citation-inner').append(citation);
+    $('#citations').slideDown();
 };
 cseBook = function(title, authorArray, edition, volume, publisher, locate) {
     var citation = '';
@@ -200,7 +216,7 @@ $( document).ready(function() {
 
 		//add author buttons
 		$('#bookAddAuthor').click(function( event) {
-				$('#bookAuthors').append(authors[0] + 'bookAuthorLast' + bookAuthors + authors[1] + 'bookAuthorInitial' + 
+				$('#bookAuthors').append(authors[0] + 'bookAuthorLast' + bookAuthors + authors[1] + 'bookAuthorInitial' +
                         bookAuthors + authors[2] + 'bookAuthorFirst' + bookAuthors + authors[3]);
 				$('.hiddenAuthor').slideDown();
 				bookAuthors++;
