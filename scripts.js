@@ -1,10 +1,10 @@
 //jquery scripts for citationscribe
 //= require jquery
 
-var showResources, showInput, format, resource, authors, makeBook, makeMagazine, makeNews, makeWeb, makeJournal, makeMovie, apaBook, mlaBook, chiBook, cseBook, showCitation;
+var showResources, showInput, format, resource, authors, makeBook, makeMagazine, makeNews, makeWeb, makeJournal, makeMovie, apaBook, mlaBook, chiBook, cseBook, showCitation, clearFields;
 
 authors = ['<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Author</label></div><div class="three columns"><input name="', '" placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input name="', '" placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input name="', '" placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>'];
-directors = '<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Director</label></div><div class="three columns"><input placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>';
+directors = ['<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Director</label></div><div class="three columns"><input name="', '" placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input name="', '" placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input name="', '" placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>'];
 var bookAuthors = 1;
 var magAuthors = 1;
 var newsAuthors = 1;
@@ -27,6 +27,12 @@ showCitation = function() {
             $(this).removeClass('hidden');
         };
     });
+};
+clearFields = function() {
+    $(':input').not(':button', ':submit', ':reset')
+      .val('');
+    bookAuthors = magAuthors = newsAuthors = webAuthors = jouAuthors = movAuthors = 1;
+    $('.hiddenAuthor').slideUp('quick', function() {$('.hiddenAuthor').remove()});
 };
 apaBook = function(title, authorArray, edition, volume, publisher, locate, year) {
 	var citation = '<p class="hidden citation">';
@@ -66,6 +72,7 @@ apaBook = function(title, authorArray, edition, volume, publisher, locate, year)
     citation += '</p>';
     $('#citation-inner').append(citation);
     showCitation();
+    clearFields();
 };
 cseBook = function(title, authorArray, edition, volume, publisher, locate) {
     var citation = '';
@@ -237,27 +244,32 @@ $( document).ready(function() {
 				bookAuthors++;
 		});
 		$('#magAddAuthor').click(function( event) {
-				$('#magAuthors').append(authors);
+				$('#magAuthors').append(authors[0] + 'magAuthorLast' + magAuthors + authors[1] + 'magAuthorInitial' +
+                        magAuthors + authors[2] + 'magAuthorFirst' + magAuthors + authors[3]);
 				$('.hiddenAuthor').slideDown();
 				magAuthors++;
 		});
 		$('#newsAddAuthor').click(function( event) {
-				$('#newsAuthors').append(authors);
+				$('#newsAuthors').append(authors[0] + 'newsAuthorLast' + newsAuthors + authors[1] + 'newsAuthorInitial' +
+                        newsAuthors + authors[2] + 'newsAuthorFirst' + newsAuthors + authors[3]);
 				$('.hiddenAuthor').slideDown();
 				newsAuthors++;
 		});
 		$('#webAddAuthor').click(function( event) {
-				$('#webAuthors').append(authors);
+				$('#webAuthors').append(authors[0] + 'webAuthorLast' + webAuthors + authors[1] + 'webAuthorInitial' +
+                        webAuthors + authors[2] + 'webAuthorFirst' + webAuthors + authors[3]);
 				$('.hiddenAuthor').slideDown();
 				webAuthors++;
 		});
 		$('#jouAddAuthor').click(function( event) {
-				$('#jouAuthors').append(authors);
+				$('#jouAuthors').append(authors[0] + 'jouAuthorLast' + jouAuthors + authors[1] + 'jouAuthorInitial' +
+                        jouAuthors + authors[2] + 'jouAuthorFirst' + jouAuthors + authors[3]);
 				$('.hiddenAuthor').slideDown();
 				jouAuthors++;
 		});
 		$('#movieAddAuthor').click(function( event) {
-				$('#movieAuthors').append(directors);
+				$('#movieAuthors').append(directors[0] + 'movAuthorLast' + movAuthors + directors[1] + 'movAuthorInitial' +
+                        movAuthors + directors[2] + 'movAuthorFirst' + movAuthors + directors[3]);
 				$('.hiddenAuthor').slideDown();
 				movAuthors++;
 		});
