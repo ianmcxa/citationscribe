@@ -17,7 +17,7 @@ html
 			h5 A simple and free multi format citation maker
 			hr/
 			.hidden#citations
-				#citation-inner
+				#citation-inner.bordered
 
 
 			h4 Select a citation format
@@ -97,8 +97,10 @@ html
 					.two.columns
 						input(class='u-full-width', placeholder='Year', type='text', id='bookYear')
 				.row
-					.three.columns
+					.six.columns
 						input(class='button-primary', id='citeBook', value='Make Citation', type='button')
+						p#bookNotComplete.alert.hidden.u-pull-right Required fields cannot be left blank
+                 
 			//magazine
 			div(id ='magInput',class='container hidden', style={width: '100%'})
 				.row
@@ -412,7 +414,7 @@ html
 				hr
 				p CitationScribe is open source under the MIT license. Code available on
 					a(href='https://github.com/ianmcxa/citationscribe')
-						| Github
+						| Github 
 						i(class='fa fa-github-square')
 
 		script(src='jquery.min.js')

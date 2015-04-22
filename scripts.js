@@ -1,7 +1,7 @@
 //jquery scripts for citationscribe
 //= require jquery
 
-var showResources, showInput, format, resource, authors, makeBook, makeMagazine, makeNews, makeWeb, makeJournal, makeMovie, apaBook, mlaBook, chiBook, cseBook, showCitation, clearFields;
+var showResources, showInput, format, resource, authors, makeBook, makeMagazine, makeNews, makeWeb, makeJournal, makeMovie, apaBook, mlaBook, chiBook, cseBook, showCitation, clearFields, notComplete;
 
 authors = ['<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Author</label></div><div class="three columns"><input name="', '" placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input name="', '" placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input name="', '" placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>'];
 directors = ['<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Director</label></div><div class="three columns"><input name="', '" placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input name="', '" placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input name="', '" placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>'];
@@ -34,6 +34,10 @@ clearFields = function() {
     bookAuthors = magAuthors = newsAuthors = webAuthors = jouAuthors = movAuthors = 1;
     $('.hiddenAuthor').slideUp('quick', function() {$('.hiddenAuthor').remove()});
 };
+notComplete = function(resounce, field) {
+	$('#' + resource + 'NotComplete').text(field + ' cannot be left blank');
+	$('#' + resource +'NotComplete').show('fast');	
+}
 apaBook = function(title, authorArray, edition, volume, publisher, locate, year) {
 	var citation = '<p class="hidden citation">';
 	for (i = 0; i < authorArray.length; i += 3) {
@@ -55,7 +59,10 @@ apaBook = function(title, authorArray, edition, volume, publisher, locate, year)
 	       citation += ' ';
 	   };
 	};
-	citation += '(' + year + '). ' + '<em>' + title + '</em> ';
+    if (year.length != 0) {
+	    citation += '(' + year + '). ';
+    }
+    citation += '<em>' + title + '</em> ';
     if (edition.length != 0) {
         citation += '(' + edition + ' ed.). ';
     };
@@ -288,7 +295,7 @@ $( document).ready(function() {
 				$('#database').slideDown();
 		});
         	$('#citeBook').click(function( event) {
-                    var title = $('#bookTitle').val();
+                var title = $('#bookTitle').val();
 	            var volume = $('#bookVolume').val();
 	            var edition = $('#bookEdition').val();
 	            var pages = $('#bookPages').val();
@@ -296,14 +303,21 @@ $( document).ready(function() {
 	            var locate = $('#bookLocation').val();
 	            var year = $('#bookYear').val();
 	            var authorArray = $('#bookAuthors').serializeArray();
-	            if (format == 'apa') {
-		            apaBook(title, authorArray, edition, volume, publisher, locate, year);
-	            } else if (format == 'mla') {
-		            mlaBook();
-	            } else if (format == 'chi') {
-		            chiBook();
-	            } else if (format == 'cse') {
-		            cseBook();
-	            };
-               });
+				if (title.length == 0) {
+					notComplete('book', 'Title');
+				} else if (authorArray[0].value.length == 0) {
+					notComplete('book', 'Author');
+				} else {
+					$('#bookNotComplete').hide('fast');	
+	            	if (format == 'apa') {
+		            	apaBook(title, authorArray, edition, volume, publisher, locate, year);
+	            	} else if (format == 'mla') {
+		            	mlaBook();
+	            	} else if (format == 'chi') {
+		            	chiBook();
+	            	} else if (format == 'cse') {
+		            	cseBook();
+	            	};
+				};
+			});
 });
