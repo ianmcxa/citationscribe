@@ -1,7 +1,7 @@
 //jquery scripts for citationscribe
 //= require jquery
 
-var showResources, showInput, format, resource, authors, makeBook, makeMagazine, makeNews, makeWeb, makeJournal, makeMovie, apaBook, mlaBook, chiBook, cseBook;
+var showResources, showInput, format, resource, authors, makeBook, makeMagazine, makeNews, makeWeb, makeJournal, makeMovie, apaBook, mlaBook, chiBook, cseBook, showCitation;
 
 authors = ['<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Author</label></div><div class="three columns"><input name="', '" placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input name="', '" placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input name="', '" placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>'];
 directors = '<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Director</label></div><div class="three columns"><input placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>';
@@ -16,13 +16,28 @@ showResources = function() {
 	$('#resourceHeader').show('fast');
 	$('#resources').show('fast');
 };
+showCitation = function() {
+    if ($('#citations').hasClass('hidden')) {
+        $('#citations').slideDown();
+        $('#citations').removeClass('hidden');
+    };
+    $('.citation').each(function() {
+        if ($(this).hasClass('hidden')) {
+            $(this).slideDown();
+            $(this).removeClass('hidden');
+        };
+    });
+};
 apaBook = function(title, authorArray, edition, volume, publisher, locate, year) {
-	var citation = '';
+	var citation = '<p class="hidden citation">';
 	for (i = 0; i < authorArray.length; i += 3) {
-	   citation += authorArray[i].value + ',';
+	   citation += authorArray[i].value;
+		 if (authorArray[i+1].value.length != 0 || authorArray[i+2].value.length !=0) {
+		    citation += ',';
+		 };
 
 	   if (authorArray[i+2].value.length != 0) {
-	       citation += ' ' + authorArray[i+1].value.charAt(0).toUpperCase() + '.';
+	       citation += ' ' + authorArray[i+2].value.charAt(0).toUpperCase() + '.';
 	   };
 	   if (authorArray[i+1].value.length != 0) {
 	       citation += ' ' + authorArray[i+1].value.charAt(0).toUpperCase() + '.';
@@ -48,9 +63,9 @@ apaBook = function(title, authorArray, edition, volume, publisher, locate, year)
     } else if(locate.length != 0) {
         citation += locate + '. ';
     };
-		citation += '<br/>'
+    citation += '</p>';
     $('#citation-inner').append(citation);
-    $('#citations').slideDown();
+    showCitation();
 };
 cseBook = function(title, authorArray, edition, volume, publisher, locate) {
     var citation = '';

@@ -16,3 +16,8 @@
 	border: 1px solid #E1E1E1;
 	border-radius: 4px;
 }
+.citation {
+    margin: .2rem;
+    text-indent: -3rem;
+    padding-left: 3rem;
+}
