@@ -34,9 +34,9 @@ clearFields = function() {
     bookAuthors = magAuthors = newsAuthors = webAuthors = jouAuthors = movAuthors = 1;
     $('.hiddenAuthor').slideUp('quick', function() {$('.hiddenAuthor').remove()});
 };
-notComplete = function(resounce, field) {
-	$('#' + resource + 'NotComplete').text(field + ' cannot be left blank');
-	$('#' + resource +'NotComplete').show('fast');	
+notComplete = function(resource1, field) {
+	$('#' + resource1 + 'NotComplete').text(field + ' cannot be left blank');
+	$('#' + resource1 +'NotComplete').slideDown('fast');
 }
 apaBook = function(title, authorArray, edition, volume, publisher, locate, year) {
 	var citation = '<p class="hidden citation">';
@@ -303,21 +303,47 @@ $( document).ready(function() {
 	            var locate = $('#bookLocation').val();
 	            var year = $('#bookYear').val();
 	            var authorArray = $('#bookAuthors').serializeArray();
-				if (title.length == 0) {
-					notComplete('book', 'Title');
-				} else if (authorArray[0].value.length == 0) {
-					notComplete('book', 'Author');
-				} else {
-					$('#bookNotComplete').hide('fast');	
+		    if (title.length == 0) notComplete('book', 'Title');
+		    else if (authorArray[0].value.length == 0) notComplete('book', 'Author');
+		    else {
+		        $('#bookNotComplete').hide('fast');	
 	            	if (format == 'apa') {
-		            	apaBook(title, authorArray, edition, volume, publisher, locate, year);
+		            apaBook(title, authorArray, edition, volume, publisher, locate, year);
 	            	} else if (format == 'mla') {
-		            	mlaBook();
+		            mlaBook();
 	            	} else if (format == 'chi') {
-		            	chiBook();
+		            chiBook();
 	            	} else if (format == 'cse') {
-		            	cseBook();
+		            cseBook();
 	            	};
-				};
-			});
+		    };
+		});
+		$('#citeMagazine').click(function( event) {
+		    var volume = $('#magVolume').val();
+		    var issue = $('#magIssue').val();
+		    var articleTitle = $('#magArticleTitle').val();
+		    var magazineTitle = $('#magTitle').val();
+		    var url = $('#magURL').val();
+		    var pages = $('#magNumbers').val();
+		    var year = $('#magYear').val();
+		    var month = $('#magMonth').val();
+		    var day = $('#magDay').val();
+		    var authorArray = $('magAuthors').serializeArray();
+		    if (articleTitle.length == 0) notComplete('mag', 'Article title');
+		    else if (magazineTitle.length == 0) notComplete('mag', 'Magazine Title');
+		    else if (authorArray[0].value.length == 0) notComplete('mag', 'Author');
+		    else {
+			$('#magNotComplete').hide('fast');
+			alert('help');
+			if (format == 'apa') {
+		            	apaMag(articleTitle, authorArray, year, magazineTitle, volume, issue, pages, url);
+	            	} else if (format == 'mla') {
+		            	mlaMag();
+	            	} else if (format == 'chi') {
+		            	chiMag();
+	            	} else if (format == 'cse') {
+		            	cseMag();
+	            	};
+		    };
+		});
 });

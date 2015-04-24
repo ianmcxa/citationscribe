@@ -136,8 +136,12 @@ html
 						label(class='u-pull-right', for='magVolume') Volume
 					.two.columns
 						input(class='u-full-width', placeholder='Volume', type='text', id='magVolume')
+					.one.column
+						label(class='u-pull-right', for='magIssue') Issue
 					.two.columns
-						label(class='u-pull-right', for='magPages') Page Numbers
+						input(class='u-full-width', placeholder='Issue', type='text', id='magIssue')
+					.one.columns
+						label(class='u-pull-right', for='magPages') Pages
 					.two.columns
 						input(class='u-full-width', placeholder='Page Numbers', type='text', id='magNumbers')
 
@@ -155,8 +159,9 @@ html
 					.two.columns
 						input(class='u-full-width', placeholder='Day', type='text', id='magDay')
 				.row
-					.three.columns
+					.six.columns
 						input(class='button-primary', id='citeMagazine', value='Make Citation', type='button')
+						p#magNotComplete.alert.hidden.u-pull-right Required fields cannot be left blank
 
 			//newspaper
 			div(id ='newsInput',class='container hidden', style={width: '100%'})

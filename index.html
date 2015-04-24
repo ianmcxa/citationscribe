@@ -192,8 +192,14 @@
           <div class="two columns">
             <input placeholder="Volume" type="text" id="magVolume" class="u-full-width">
           </div>
+          <div class="one column">
+            <label for="magIssue" class="u-pull-right">Issue</label>
+          </div>
           <div class="two columns">
-            <label for="magPages" class="u-pull-right">Page Numbers</label>
+            <input placeholder="Issue" type="text" id="magIssue" class="u-full-width">
+          </div>
+          <div class="one columns">
+            <label for="magPages" class="u-pull-right">Pages</label>
           </div>
           <div class="two columns">
             <input placeholder="Page Numbers" type="text" id="magNumbers" class="u-full-width">
@@ -220,8 +226,9 @@
           </div>
         </div>
         <div class="row">
-          <div class="three columns">
+          <div class="six columns">
             <input id="citeMagazine" value="Make Citation" type="button" class="button-primary">
+            <p id="magNotComplete" class="alert hidden u-pull-right">Required fields cannot be left blank</p>
           </div>
         </div>
       </div>
