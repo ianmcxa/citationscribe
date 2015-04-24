@@ -226,8 +226,9 @@ html
 					.two.columns
 						input(class='u-full-width', placeholder='Day', type='text', id='newsDay')
 				.row
-					.three.columns
+					.six.columns
 						input(class='button-primary', id='citeNewspaper', value='Make Citation', type='button')
+						p#newsNotComplete.alert.hidden.u-pull-right Required fields cannot be left blank
 
 			//website
 			div(id ='webInput',class='container hidden', style={width: '100%'})
@@ -277,8 +278,9 @@ html
 					.two.columns
 						input(class='u-full-width', placeholder='Day', type='text', id='webDay')
 				.row
-					.three.columns
+					.six.columns
 						input(class='button-primary', id='citeWebsite', value='Make Citation', type='button')
+						p#webNotComplete.alert.hidden.u-pull-right Required fields cannot be left blank
 
 			//Journal
 			div(id ='journalInput',class='container hidden', style={width: '100%'})
@@ -366,9 +368,9 @@ html
 					.two.columns
 						input(class='u-full-width', placeholder='Day', type='text', id='jouDay')
 				.row
-					.three.columns
+					.six.columns
 						input(class='button-primary', id='citeJournal', value='Make Citation', type='button')
-
+						p#jouNotComplete.alert.hidden.u-pull-right Required fields cannot be left blank
 			//film
 			div(id ='movieInput',class='container hidden', style={width: '100%'})
 				.row
@@ -415,6 +417,7 @@ html
 				.row
 					.three.columns
 						input(class='button-primary', id='citeMovie', value='Make Citation', type='button')
+						p#movNotComplete.alert.hidden.u-pull-right Required fields cannot be left blank
 			.footer
 				hr
 				p CitationScribe is open source under the MIT license. Code available on

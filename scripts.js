@@ -328,13 +328,12 @@ $( document).ready(function() {
 		    var year = $('#magYear').val();
 		    var month = $('#magMonth').val();
 		    var day = $('#magDay').val();
-		    var authorArray = $('magAuthors').serializeArray();
+		    var authorArray = $('#magAuthors').serializeArray();
 		    if (articleTitle.length == 0) notComplete('mag', 'Article title');
 		    else if (magazineTitle.length == 0) notComplete('mag', 'Magazine Title');
 		    else if (authorArray[0].value.length == 0) notComplete('mag', 'Author');
 		    else {
 			$('#magNotComplete').hide('fast');
-			alert('help');
 			if (format == 'apa') {
 		            	apaMag(articleTitle, authorArray, year, magazineTitle, volume, issue, pages, url);
 	            	} else if (format == 'mla') {
@@ -343,6 +342,59 @@ $( document).ready(function() {
 		            	chiMag();
 	            	} else if (format == 'cse') {
 		            	cseMag();
+	            	};
+		    };
+		});
+	        $('#citeNewspaper').click(function( event) {
+		    var edition = $('#newsEdition').val();
+		    var articleTitle = $('#newsArticleTitle').val();
+		    var newspaperTitle = $('#newsTitle').val();
+		    var url = $('#newsURL').val();
+		    var publisher = $('newsPublisher').val();
+		    var city = $('newsCity').val();
+		    var pages = $('#newsNumbers').val();
+		    var year = $('#newsYear').val();
+		    var month = $('#newsMonth').val();
+		    var day = $('#newsDay').val();
+		    var authorArray = $('#newsAuthors').serializeArray();
+		    if (articleTitle.length == 0) notComplete('news', 'Article title');
+		    else if (newspaperTitle.length == 0) notComplete('news', 'Newspaper Title');
+		    else if (authorArray[0].value.length == 0) notComplete('news', 'Author');
+		    else {
+			$('#newsNotComplete').hide('fast');
+			if (format == 'apa') {
+		            	apaNews(articleTitle, authorArray, year, month, day, newspaperTitle, pages);
+	            	} else if (format == 'mla') {
+		            	mlaNews();
+	            	} else if (format == 'chi') {
+		            	chiNews();
+	            	} else if (format == 'cse') {
+		            	cseNews();
+	            	};
+		    };
+		});
+		 $('#citeWebsite').click(function( event) {
+		    var articleTitle = $('#webArticleTitle').val();
+		    var websiteTitle = $('#webTitle').val();
+		    var url = $('#webURL').val();
+		    var publisher = $('webPublisher').val();
+		    var year = $('#webYear').val();
+		    var month = $('#webMonth').val();
+		    var day = $('#webDay').val();
+		    var authorArray = $('#webAuthors').serializeArray();
+		    if (articleTitle.length == 0) notComplete('web', 'Article title');
+		    else if (websiteTitle.length == 0) notComplete('web', 'Website Title');
+		    else if (authorArray[0].value.length == 0) notComplete('web', 'Author');
+		    else {
+			$('#webNotComplete').hide('fast');
+			if (format == 'apa') {
+		            	apaWeb(articleTitle, authorArray, year, month, day, newspaperTitle, pages);
+	            	} else if (format == 'mla') {
+		            	mlaWeb();
+	            	} else if (format == 'chi') {
+		            	chiWeb();
+	            	} else if (format == 'cse') {
+		            	cseWeb();
 	            	};
 		    };
 		});
