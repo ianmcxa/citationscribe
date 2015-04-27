@@ -1,7 +1,7 @@
 //jquery scripts for citationscribe
 //= require jquery
 
-var showResources, showInput, format, resource, authors, makeBook, makeMagazine, makeNews, makeWeb, makeJournal, makeMovie, apaBook, mlaBook, chiBook, cseBook, showCitation, clearFields, notComplete;
+var showResources, showInput, format, resource, authors, makeBook, makeMagazine, makeNews, makeWeb, makeJournal, makeMovie, apaBook, mlaBook, chiBook, cseBook, showCitation, clearFields, notComplete, journalSource;
 
 authors = ['<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Author</label></div><div class="three columns"><input name="', '" placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input name="', '" placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input name="', '" placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>'];
 directors = ['<div class="row hiddenAuthor" style="display:none;"><div class="two columns"><label class="u-pull-right">Director</label></div><div class="three columns"><input name="', '" placeholder="Last Name" type="text" class="u-full-width AuthorLast"></div><div class="two columns"><input name="', '" placeholder="Initial" type="text" class="u-full-width AuthorInitial"></div><div class="three columns"><input name="', '" placeholder="First Name" type="text" class="u-full-width AuthorFirst"></div></div>'];
@@ -285,14 +285,17 @@ $( document).ready(function() {
 		$('#selectPrint').click(function( event) {
 				$('#online').slideUp('fast');
 				$('#database').slideUp('fast');
+				journalSource = 'print';
 		});
 		$('#selectOnline').click(function( event) {
 				$('#database').slideUp('fast');
 				$('#online').slideDown();
+				journalSource = 'online';
 		});
 		$('#selectDatabase').click(function( event) {
 				$('#online').slideUp('fast');
 				$('#database').slideDown();
+				journalSource = 'database';
 		});
         	$('#citeBook').click(function( event) {
                 var title = $('#bookTitle').val();
@@ -306,7 +309,7 @@ $( document).ready(function() {
 		    if (title.length == 0) notComplete('book', 'Title');
 		    else if (authorArray[0].value.length == 0) notComplete('book', 'Author');
 		    else {
-		        $('#bookNotComplete').hide('fast');	
+		        $('#bookNotComplete').hide('fast');
 	            	if (format == 'apa') {
 		            apaBook(title, authorArray, edition, volume, publisher, locate, year);
 	            	} else if (format == 'mla') {
@@ -388,7 +391,7 @@ $( document).ready(function() {
 		    else {
 			$('#webNotComplete').hide('fast');
 			if (format == 'apa') {
-		            	apaWeb(articleTitle, authorArray, year, month, day, newspaperTitle, pages);
+		            	apaWeb(articleTitle, authorArray, year, month, day, websiteTitle, pages);
 	            	} else if (format == 'mla') {
 		            	mlaWeb();
 	            	} else if (format == 'chi') {
@@ -398,4 +401,59 @@ $( document).ready(function() {
 	            	};
 		    };
 		});
+		$('#citeJournal').click(function( event) {
+			var articleTitle = $('#jouArticleTitle').val();
+			var journalTitle = $('#jouTitle').val();
+			var url = $('#jouURL').val();
+			var publisher = $('jouPublisher').val();
+			var volume = $('#jouVolume').val();
+			var issue = $('#jouIssue').val();
+			var pages = $('#jouPages').val();
+			var year = $('#jouYear').val();
+			var month = $('#joubMonth').val();
+			var day = $('#jouDay').val();
+			var webTitle = $('#jouWebTitle').val();
+			var webURL = $('#jouWebURL').val();
+			var datTitle = $('#jouDatTitle').val();
+			var datURL = $('#jouDatURL').val();
+			var authorArray = $('#jouAuthors').serializeArray();
+			if (articleTitle.length == 0) notComplete('jou', 'Article title');
+			else if (journalTitle.length == 0) notComplete('jou', 'Journal Title');
+			else if (authorArray[0].value.length == 0) notComplete('jou', 'Author');
+			else {
+		  $('#jouNotComplete').hide('fast');
+		  if (format == 'apa') {
+								apaJou();
+							} else if (format == 'mla') {
+								mlaJou();
+							} else if (format == 'chi') {
+								chiJou();
+							} else if (format == 'cse') {
+								cseJou();
+							};
+			};
+		 });
+		$('#citeMovie').click(function( event) {
+				var title = $('#movieTitle').val();
+		    var publisher = $('#moviePublisher').val();
+				var performers = $('#moviePerformers').val();
+				var locate = $('#movieLocation').val();
+				var medium = $('#movieMedium').val();
+		    var year = $('#movieYear').val();
+		    var authorArray = $('#movieAuthors').serializeArray();
+		    if (Title.length == 0) notComplete('movie', 'Article title');
+		    else if (authorArray[0].value.length == 0) notComplete('movie', 'Director');
+		    else {
+			  $('#movieNotComplete').hide('fast');
+			  if (format == 'apa') {
+		            	apaMovie());
+	            	} else if (format == 'mla') {
+		            	mlaMovie();
+	            	} else if (format == 'chi') {
+		            	chiMovie();
+	            	} else if (format == 'cse') {
+		            	cseMovie();
+	            	};
+		    };
+	});
 });

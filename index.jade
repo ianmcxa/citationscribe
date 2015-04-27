@@ -100,7 +100,7 @@ html
 					.six.columns
 						input(class='button-primary', id='citeBook', value='Make Citation', type='button')
 						p#bookNotComplete.alert.hidden.u-pull-right Required fields cannot be left blank
-                 
+
 			//magazine
 			div(id ='magInput',class='container hidden', style={width: '100%'})
 				.row
@@ -286,7 +286,7 @@ html
 			div(id ='journalInput',class='container hidden', style={width: '100%'})
 				.row
 					.two.columns
-						label(class='u-pull-right', for='title') Article Title
+						label(class='u-pull-right', for='jouArticletitle') Article Title
 					.six.columns
 						input(class='u-full-width', placeholder='Title', type='text', id='jouArticleTitle')
 				form#jouAuthors
@@ -375,7 +375,7 @@ html
 			div(id ='movieInput',class='container hidden', style={width: '100%'})
 				.row
 					.two.columns
-						label(class='u-pull-right', for='movietitle') Movie Title
+						label(class='u-pull-right', for='movieTitle') Movie Title
 					.six.columns
 						input(class='u-full-width', placeholder='Title', type='text', id='movieTitle')
 				form#movieAuthors
@@ -417,12 +417,12 @@ html
 				.row
 					.three.columns
 						input(class='button-primary', id='citeMovie', value='Make Citation', type='button')
-						p#movNotComplete.alert.hidden.u-pull-right Required fields cannot be left blank
+						p#movieNotComplete.alert.hidden.u-pull-right Required fields cannot be left blank
 			.footer
 				hr
 				p CitationScribe is open source under the MIT license. Code available on
 					a(href='https://github.com/ianmcxa/citationscribe')
-						| Github 
+						| Github
 						i(class='fa fa-github-square')
 
 		script(src='jquery.min.js')
