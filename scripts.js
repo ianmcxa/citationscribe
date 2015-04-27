@@ -164,7 +164,7 @@ mlaBook = function(title, authorArray, edition, volume, publisher, locate, year)
 		 }
 		 citation += '. ';
 
-		citation += '<em>' + title + '</em> ';
+		citation += '<em>' + title + '.' + '</em> ';
 		if (edition.length != 0)
 				citation += edition + ' ed. ';
 		if (volume.length != 0)
@@ -183,6 +183,75 @@ mlaBook = function(title, authorArray, edition, volume, publisher, locate, year)
 		showCitation();
 		clearFields();
 };
+chiBook = function(title, authorArray, volume, publisher, locate, year) {
+	   var citation = '<p class="hidden citation">';
+		 citation += authorArray[0].value;
+		 // how many authors do we have?
+	   var count = 0;
+	   for (i = 0; i < authorArray.length; i += 3) {
+		     if (authorArray[i].value.length != 0 ) count++;
+		 };
+		 if (count < 3) {
+						 if (authorArray[2].value.length != 0 || authorArray[1].value.length != 0)
+						     citation += ', ';
+						 if (authorArray[2].value.length != 0) {
+						     citation += authorArray[2].value;
+								 if (authorArray[1].value.length != 0) citation += '. ';
+						 }
+						 if (authorArray[1].value.length != 0)
+						     citation += authorArray[1].value.toUpperCase().charAt(0);
+						 //if there are 2 auhtors
+						 if (authorArray.length > 3) {
+						     if (authorArray[3].value.length != 0 || authorArray[5].value.length != 0) {
+						         citation += ', and ';
+								     if (authorArray[5].value.length != 0) {
+								         citation += authorArray[5].value;
+								     if (authorArray[4].value.length != 0 || authorArray[3].value.length != 0)
+										        citation += ' ';
+								     }
+								     if (authorArray[4].value.length != 0) {
+								         citation += authorArray[4].value.toUpperCase().charAt(0) + '.';
+										     if (authorArray[3].value.length != 0) citation += ' ';
+								     }
+								     if (authorArray[3].value.length != 0)
+								         citation += authorArray[3].value;
+						     }
+					   }
+		 }
+		 else {
+         citation += ',';
+				 for (i = 3; i < authorArray.length; i += 3) {
+             if (authorArray[i+2].value.length != 0)
+						     citation += ' ' + authorArray[i+2].value;
+						 if (authorArray[i+1].value.length != 0)
+						     citation += ' ' + authorArray[i+1].value.toUpperCase().charAt(0) + '.';
+						 if (authorArray[i].value.length != 0)
+						     citation += ' ' + authorArray[i].value;
+						 if (i+6 < authorArray.length)
+						     citation += ',';
+						 else if (i+3 < authorArray.length)
+						     citation += ', and';
+				 }
+		 }
+		 citation += '. ';
+
+		citation += '<em>' + title + '.' + '</em> ';
+		if (volume.length != 0)
+				citation += 'vol. ' + volume + '. ';
+		if (locate.length != 0) {
+				citation += locate;
+				if (publisher.length != 0) citation += ': ';
+				else citation += ', ';
+		}
+
+		if (publisher.length != 0) citation += publisher + ', ';
+		if (year.length != 0) citation += year + '.';
+
+		citation += '</p>';
+		$('#citation-inner').append(citation);
+		showCitation();
+		clearFields();
+}
 
 showInput = function() {
 	if (resource == 'book') {
@@ -414,7 +483,7 @@ $( document).ready(function() {
 	            	} else if (format == 'mla') {
 		            mlaBook(title, authorArray, edition, volume, publisher, locate, year);
 	            	} else if (format == 'chi') {
-		            chiBook();
+		            chiBook(title, authorArray, volume, publisher, locate, year);
 	            	} else if (format == 'cse') {
 		            cseBook(title, authorArray, edition, publisher, locate, year);
 	            	};
