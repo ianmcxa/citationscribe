@@ -76,13 +76,44 @@ apaBook = function(title, authorArray, edition, volume, publisher, locate, year)
     } else if(locate.length != 0) {
         citation += locate + '. ';
     };
-    citation += '</p>';
+
+	  citation += '</p>';
     $('#citation-inner').append(citation);
     showCitation();
     clearFields();
 };
-cseBook = function(title, authorArray, edition, volume, publisher, locate) {
-    var citation = '';
+cseBook = function(title, authorArray, edition, publisher, locate, year) {
+    var citation = '<p class="hidden citation">';
+		for (i = 0; i < authorArray.length; i += 3) {
+		   citation += authorArray[i].value;
+		   if (authorArray[i+2].value.length != 0) {
+		       citation += ' ' + authorArray[i+2].value.charAt(0).toUpperCase();
+		   };
+		   if (authorArray[i+1].value.length != 0) {
+		       citation += authorArray[i+1].value.charAt(0).toUpperCase();
+		   };
+
+		   if (i + 3 < authorArray.length) {
+		       citation += ', ';
+		   } else {
+		       citation += '. ';
+		   };
+		};
+			citation += title + '. ';
+			if (edition.length != 0) citation += edition + '. ';
+			if (locate.length != 0 && publisher.length != 0) {
+				citation += locate + ': ' + publisher + ';';
+			} else if (publisher.length != 0) citation += publisher + '; ';
+			else if (locate.length != 0) citation += locate + '; ';
+			if (year.length != 0) citation += year + '.';
+
+			citation += '</p>';
+			$('#citation-inner').append(citation);
+			showCitation();
+			clearFields();
+};
+mlaBook(title, authorArray, edition, volume, publisher, locate, year) {
+	   
 };
 
 showInput = function() {
@@ -297,7 +328,7 @@ $( document).ready(function() {
 				$('#database').slideDown();
 				journalSource = 'database';
 		});
-        	$('#citeBook').click(function( event) {
+    $('#citeBook').click(function( event) {
                 var title = $('#bookTitle').val();
 	            var volume = $('#bookVolume').val();
 	            var edition = $('#bookEdition').val();
@@ -317,7 +348,7 @@ $( document).ready(function() {
 	            	} else if (format == 'chi') {
 		            chiBook();
 	            	} else if (format == 'cse') {
-		            cseBook();
+		            cseBook(title, authorArray, edition, publisher, locate, year);
 	            	};
 		    };
 		});
@@ -364,8 +395,8 @@ $( document).ready(function() {
 		    else if (newspaperTitle.length == 0) notComplete('news', 'Newspaper Title');
 		    else if (authorArray[0].value.length == 0) notComplete('news', 'Author');
 		    else {
-			$('#newsNotComplete').hide('fast');
-			if (format == 'apa') {
+			  $('#newsNotComplete').hide('fast');
+			  if (format == 'apa') {
 		            	apaNews(articleTitle, authorArray, year, month, day, newspaperTitle, pages);
 	            	} else if (format == 'mla') {
 		            	mlaNews();
@@ -446,7 +477,7 @@ $( document).ready(function() {
 		    else {
 			  $('#movieNotComplete').hide('fast');
 			  if (format == 'apa') {
-		            	apaMovie());
+		            	apaMovie();
 	            	} else if (format == 'mla') {
 		            	mlaMovie();
 	            	} else if (format == 'chi') {
