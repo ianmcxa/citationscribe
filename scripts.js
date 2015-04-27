@@ -56,13 +56,15 @@ apaBook = function(title, authorArray, edition, volume, publisher, locate, year)
 	   if (i + 3 < authorArray.length) {
 	       citation += ', & ';
 	   } else {
+			   if (authorArray[i+1].value.length == 0 && authorArray[i+2].value.length == 0)
+				    citation += '.';
 	       citation += ' ';
 	   };
 	};
     if (year.length != 0) {
 	    citation += '(' + year + '). ';
     }
-    citation += '<em>' + title + '</em> ';
+    citation += '<em>' + title + '. ' + '</em> ';
     if (edition.length != 0) {
         citation += '(' + edition + ' ed.). ';
     };
@@ -82,7 +84,7 @@ apaBook = function(title, authorArray, edition, volume, publisher, locate, year)
     showCitation();
     clearFields();
 };
-apaMag = function(articleTitle, authorArray, year, magazineTitle, volume, issue, pages, url) {
+apaMag = function(articleTitle, authorArray, year, month, day, magazineTitle, volume, issue, pages, url) {
 	var citation = '<p class="hidden citation">';
 	for (i = 0; i < authorArray.length; i += 3) {
 	   citation += authorArray[i].value;
@@ -100,27 +102,188 @@ apaMag = function(articleTitle, authorArray, year, magazineTitle, volume, issue,
 	   if (i + 3 < authorArray.length) {
 	       citation += ', & ';
 	   } else {
+			   if (authorArray[i+1].value.length == 0 && authorArray[i+2].value.length == 0)
+				     citation += '.';
 	       citation += ' ';
 	   };
 	};
     if (year.length != 0) {
 	    citation += '(' + year;
 			if (month.length != 0) {
-			    citation += ', '+ month;
-					if (day.length != 0)
-					    citation += ' ' + day;
-					citation += '). ';
-			} else citation += '). ';
-
+			    citation += ', ' + month;
+					if (day.length != 0) citation += ' ' + day;
+			}
+			citation += '). ';
     }
-    citation += '<em>' + title + '</em> ';
-    if (edition.length != 0) {
-        citation += '(' + edition + ' ed.). ';
-    };
-    if (volume.length != 0) {
-        citation += '(Vol. ' + volume + '). '
-    };
-    if (publisher.length != 0 && locate.length != 0) {
+
+		citation += articleTitle + '. ';
+    citation += '<em>' + magazineTitle + ', </em> ';
+		if (issue.length != 0) citation += '<em>' + issue + '</em>';
+    if (volume.length != 0) citation += '(' + volume + ')';
+		if (volume.length != 0 || issue.length != 0) citation += ', ';
+		if (pages.length != 0) citation += pages + '. ';
+		if (url.length != 0) citation += url;
+
+	  citation += '</p>';
+    $('#citation-inner').append(citation);
+    showCitation();
+    clearFields();
+};
+apaNews = function(articleTitle, authorArray, year, month, day, newspaperTitle, pages, url) {
+	var citation = '<p class="hidden citation">';
+	for (i = 0; i < authorArray.length; i += 3) {
+	   citation += authorArray[i].value;
+		 if (authorArray[i+1].value.length != 0 || authorArray[i+2].value.length !=0) {
+		    citation += ',';
+		 };
+
+	   if (authorArray[i+2].value.length != 0) {
+	       citation += ' ' + authorArray[i+2].value.charAt(0).toUpperCase() + '.';
+	   };
+	   if (authorArray[i+1].value.length != 0) {
+	       citation += ' ' + authorArray[i+1].value.charAt(0).toUpperCase() + '.';
+	   };
+
+	   if (i + 3 < authorArray.length) {
+	       citation += ', & ';
+	   } else {
+			   if (authorArray[i+1].value.length == 0 && authorArray[i+2].value.length == 0)
+					  citation += '.';
+	       citation += ' ';
+	   };
+	};
+    if (year.length != 0) {
+	    citation += '(' + year;
+			if (month.length != 0) {
+			    citation += ', ' + month;
+					if (day.length != 0) citation += ' ' + day;
+			}
+			citation += '). ';
+    }
+
+		citation += articleTitle + '. ';
+    citation += '<em>' + newspaperTitle + ', </em> ';
+		if (pages.length != 0) citation += 'pp. ' + pages + '. ';
+		if (url.length != 0) citation += url;
+
+	  citation += '</p>';
+    $('#citation-inner').append(citation);
+    showCitation();
+    clearFields();
+};
+apaWeb = function(articleTitle, authorArray, year, month, day, url) {
+	var citation = '<p class="hidden citation">';
+	for (i = 0; i < authorArray.length; i += 3) {
+	   citation += authorArray[i].value;
+		 if (authorArray[i+1].value.length != 0 || authorArray[i+2].value.length !=0) {
+		    citation += ',';
+		 };
+
+	   if (authorArray[i+2].value.length != 0) {
+	       citation += ' ' + authorArray[i+2].value.charAt(0).toUpperCase() + '.';
+	   };
+	   if (authorArray[i+1].value.length != 0) {
+	       citation += ' ' + authorArray[i+1].value.charAt(0).toUpperCase() + '.';
+	   };
+
+	   if (i + 3 < authorArray.length) {
+	       citation += ', & ';
+	   } else {
+			   if (authorArray[i+1].value.length == 0 && authorArray[i+2].value.length == 0)
+				    citation += '.';
+	       citation += ' ';
+	   };
+	};
+    if (year.length != 0) {
+	    citation += '(' + year;
+			if (month.length != 0) {
+			    citation += ', ' + month;
+					if (day.length != 0) citation += ' ' + day;
+			}
+			citation += '). ';
+    }
+
+    citation += '<em>' + articleTitle + '. </em> ';
+		if (url.length != 0) citation += 'Retrieved from ' + url;
+
+	  citation += '</p>';
+    $('#citation-inner').append(citation);
+    showCitation();
+    clearFields();
+};
+apaJou = function(articleTitle, journalTitle, authorArray, year, month, day, webURL, datURL, volume, issue, pages) {
+	var citation = '<p class="hidden citation">';
+	for (i = 0; i < authorArray.length; i += 3) {
+	   citation += authorArray[i].value;
+		 if (authorArray[i+1].value.length != 0 || authorArray[i+2].value.length !=0) {
+		    citation += ',';
+		 };
+
+	   if (authorArray[i+2].value.length != 0) {
+	       citation += ' ' + authorArray[i+2].value.charAt(0).toUpperCase() + '.';
+	   };
+	   if (authorArray[i+1].value.length != 0) {
+	       citation += ' ' + authorArray[i+1].value.charAt(0).toUpperCase() + '.';
+	   };
+
+	   if (i + 3 < authorArray.length) {
+	       citation += ', & ';
+	   } else {
+			   if (authorArray[i+1].value.length == 0 && authorArray[i+2].value.length == 0)
+				    citation += '.';
+	       citation += ' ';
+	   };
+	};
+    if (year.length != 0) {
+	    citation += '(' + year;
+			if (month.length != 0) {
+			    citation += ', ' + month;
+					if (day.length != 0) citation += ' ' + day;
+			}
+			citation += '). ';
+    }
+
+		citation += articleTitle + '. ';
+    citation += '<em>' + journalTitle + ', </em> ';
+		if (issue.length != 0) citation += '<em>' + issue + '</em>';
+    if (volume.length != 0) citation += '(' + volume + ')';
+		if (volume.length != 0 || issue.length != 0) citation += ', ';
+		if (pages.length != 0) citation += pages + '. ';
+		if (journalSource == 'online' && webURL.length != 0)
+		    citation += 'Retrieved from ' + webURL;
+		else if (journalSource == 'database' && datURL.length != 0)
+		   citation += 'Retrieved from ' + datURL;
+
+	  citation += '</p>';
+    $('#citation-inner').append(citation);
+    showCitation();
+    clearFields();
+};
+apaMovie = function(title, authorArray, publisher, locate, year) {
+	var citation = '<p class="hidden citation">';
+	for (i = 0; i < authorArray.length; i += 3) {
+	   citation += authorArray[i].value;
+		 if (authorArray[i+1].value.length != 0 || authorArray[i+2].value.length !=0) {
+		    citation += ',';
+		 };
+
+	   if (authorArray[i+2].value.length != 0) {
+	       citation += ' ' + authorArray[i+2].value.charAt(0).toUpperCase() + '.';
+	   };
+	   if (authorArray[i+1].value.length != 0) {
+	       citation += ' ' + authorArray[i+1].value.charAt(0).toUpperCase() + '.';
+	   };
+
+	   if (i + 3 < authorArray.length) {
+	       citation += ' (Director), & ';
+	   } else {
+	       citation += ' (Director). ';
+	   };
+	};
+	if (year.length != 0) {
+		citation += '(' + year + '). ';
+		citation += '<em>' + title + ' [Motion Picture]. </em> ';
+		if (publisher.length != 0 && locate.length != 0) {
         citation += locate + ': ' + publisher + '.';
     } else if(publisher.length != 0) {
         citation += publisher + '. ';
@@ -128,10 +291,12 @@ apaMag = function(articleTitle, authorArray, year, magazineTitle, volume, issue,
         citation += locate + '. ';
     };
 
-	  citation += '</p>';
+		citation += '</p>';
     $('#citation-inner').append(citation);
     showCitation();
     clearFields();
+	}
+
 };
 cseBook = function(title, authorArray, edition, publisher, locate, year) {
     var citation = '<p class="hidden citation">';
@@ -557,7 +722,7 @@ $( document).ready(function() {
 		    else {
 			$('#magNotComplete').hide('fast');
 			if (format == 'apa') {
-		            	apaMag(articleTitle, authorArray, year, magazineTitle, volume, issue, pages, url);
+		            	apaMag(articleTitle, authorArray, year, month, day, magazineTitle, volume, issue, pages, url);
 	            	} else if (format == 'mla') {
 		            	mlaMag();
 	            	} else if (format == 'chi') {
@@ -585,7 +750,7 @@ $( document).ready(function() {
 		    else {
 			  $('#newsNotComplete').hide('fast');
 			  if (format == 'apa') {
-		            	apaNews(articleTitle, authorArray, year, month, day, newspaperTitle, pages);
+		            	apaNews(articleTitle, authorArray, year, month, day, newspaperTitle, pages, url);
 	            	} else if (format == 'mla') {
 		            	mlaNews();
 	            	} else if (format == 'chi') {
@@ -605,12 +770,13 @@ $( document).ready(function() {
 		    var day = $('#webDay').val();
 		    var authorArray = $('#webAuthors').serializeArray();
 		    if (articleTitle.length == 0) notComplete('web', 'Article title');
+				else if (url.length == 0) notComplete('web', 'URL');
 		    else if (websiteTitle.length == 0) notComplete('web', 'Website Title');
 		    else if (authorArray[0].value.length == 0) notComplete('web', 'Author');
 		    else {
 			$('#webNotComplete').hide('fast');
 			if (format == 'apa') {
-		            	apaWeb(articleTitle, authorArray, year, month, day, websiteTitle, pages);
+		            	apaWeb(articleTitle, authorArray, year, month, day, url);
 	            	} else if (format == 'mla') {
 		            	mlaWeb();
 	            	} else if (format == 'chi') {
@@ -623,13 +789,12 @@ $( document).ready(function() {
 		$('#citeJournal').click(function( event) {
 			var articleTitle = $('#jouArticleTitle').val();
 			var journalTitle = $('#jouTitle').val();
-			var url = $('#jouURL').val();
 			var publisher = $('jouPublisher').val();
 			var volume = $('#jouVolume').val();
 			var issue = $('#jouIssue').val();
 			var pages = $('#jouPages').val();
 			var year = $('#jouYear').val();
-			var month = $('#joubMonth').val();
+			var month = $('#jouMonth').val();
 			var day = $('#jouDay').val();
 			var webTitle = $('#jouWebTitle').val();
 			var webURL = $('#jouWebURL').val();
@@ -642,7 +807,7 @@ $( document).ready(function() {
 			else {
 		  $('#jouNotComplete').hide('fast');
 		  if (format == 'apa') {
-								apaJou();
+								apaJou(articleTitle, journalTitle, authorArray, year, month, day, webURL, datURL, volume, issue, pages);
 							} else if (format == 'mla') {
 								mlaJou();
 							} else if (format == 'chi') {
@@ -660,12 +825,12 @@ $( document).ready(function() {
 				var medium = $('#movieMedium').val();
 		    var year = $('#movieYear').val();
 		    var authorArray = $('#movieAuthors').serializeArray();
-		    if (Title.length == 0) notComplete('movie', 'Article title');
+		    if (title.length == 0) notComplete('movie', 'Movie title');
 		    else if (authorArray[0].value.length == 0) notComplete('movie', 'Director');
 		    else {
 			  $('#movieNotComplete').hide('fast');
 			  if (format == 'apa') {
-		            	apaMovie();
+		            	apaMovie(title, authorArray, publisher, locate, year);
 	            	} else if (format == 'mla') {
 		            	mlaMovie();
 	            	} else if (format == 'chi') {
